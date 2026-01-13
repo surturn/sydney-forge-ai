@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Download, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowRight, Download, Github, Linkedin, Mail, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
@@ -44,14 +44,14 @@ const Home = () => {
                 Hi, I'm{' '}
                 <span className="text-gradient">Sydney Kamau</span>
               </motion.h1>
-              
+
               <motion.p
                 variants={itemVariants}
                 className="text-xl text-muted-foreground mb-8 leading-relaxed"
               >
                 Full-Stack Developer specializing in{' '}
                 <span className="text-primary font-semibold">AI Integration</span> and{' '}
-                <span className="text-primary font-semibold">Automation</span>. 
+                <span className="text-primary font-semibold">Automation</span>.
                 I build scalable solutions that transform businesses and streamline workflows.
               </motion.p>
 
@@ -76,18 +76,25 @@ const Home = () => {
                 className="flex items-center gap-4"
               >
                 <Button variant="ghost" size="sm" asChild>
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                  <a href="https://github.com/surturn" target="_blank" rel="noopener noreferrer">
                     <Github className="h-5 w-5" />
                   </a>
                 </Button>
                 <Button variant="ghost" size="sm" asChild>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.linkedin.com/in/sydney-kamau-991b362a2" target="_blank" rel="noopener noreferrer">
                     <Linkedin className="h-5 w-5" />
                   </a>
                 </Button>
-                <Button variant="secondary" size="sm">
-                  <Download className="h-4 w-4 mr-2" />
-                  Resume
+                <Button variant="ghost" size="sm" asChild>
+                  <a href="https://www.instagram.com/sydneystechhub" target="_blank" rel="noopener noreferrer">
+                    <Instagram className="h-5 w-5" />
+                  </a>
+                </Button>
+                <Button variant="secondary" size="sm" asChild>
+                  <a href="/SydneyKamauResume.docx" download>
+                    <Download className="h-4 w-4 mr-2" />
+                    Resume
+                  </a>
                 </Button>
               </motion.div>
             </div>
@@ -120,10 +127,10 @@ const Home = () => {
             className="grid grid-cols-2 md:grid-cols-4 gap-8"
           >
             {[
-              { number: '50+', label: 'Projects Completed' },
-              { number: '5+', label: 'Years Experience' },
-              { number: '30+', label: 'Technologies' },
-              { number: '100%', label: 'Client Satisfaction' },
+              { number: '5+', label: 'Projects Delivered' },
+              { number: '1+', label: 'Years Experience' },
+              { number: '15+', label: 'Technologies' },
+              { number: '5+', label: 'Happy Clients' },
             ].map((stat, index) => (
               <Card key={index} className="p-6 text-center">
                 <div className="text-3xl font-bold text-primary mb-2">{stat.number}</div>

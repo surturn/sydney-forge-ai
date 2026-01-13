@@ -1,73 +1,120 @@
-# Welcome to your Lovable project
+# Sydney Kamau - Portfolio Website
 
-## Project info
+A modern, responsive portfolio website showcasing my work as a Full-Stack Developer & AI Specialist.
 
-**URL**: https://lovable.dev/projects/24b1059e-d804-4b5c-8976-dde99c228106
+🔗 **Live Site**: *Coming Soon*
 
-## How can I edit this code?
+![Portfolio Preview](public/og-image.png)
 
-There are several ways of editing your application.
+## ✨ Features
 
-**Use Lovable**
+- **Dark/Light Mode** - Toggle between themes with persistent preference
+- **Responsive Design** - Optimized for all devices (mobile, tablet, desktop)
+- **Animated UI** - Smooth animations powered by Framer Motion
+- **Real Projects** - Showcasing actual work with live demos and GitHub links
+- **Contact Integration** - Email, Phone, WhatsApp, and Calendly scheduling
+- **Certificate Gallery** - Visual display of professional certifications
+- **Resume Download** - One-click CV download
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/24b1059e-d804-4b5c-8976-dde99c228106) and start prompting.
+## 🛠️ Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Frontend**: React 18 + TypeScript
+- **Styling**: Tailwind CSS + shadcn/ui components
+- **Build Tool**: Vite
+- **Animations**: Framer Motion
+- **Theming**: next-themes
+- **Icons**: Lucide React
 
-**Use your preferred IDE**
+## 📁 Project Structure
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+```
+sydney-forge-ai/
+├── public/
+│   ├── certificates/       # Certificate images
+│   ├── og-image.png        # Social sharing preview
+│   ├── favicon.svg         # SH branded favicon
+│   └── SydneyKamauResume.docx
+├── src/
+│   ├── components/         # Reusable UI components
+│   │   ├── ui/             # shadcn/ui components
+│   │   ├── Navigation.tsx
+│   │   ├── ThemeProvider.tsx
+│   │   └── ThemeToggle.tsx
+│   ├── pages/              # Route pages
+│   │   ├── Home.tsx
+│   │   ├── About.tsx
+│   │   ├── Skills.tsx
+│   │   ├── Projects.tsx
+│   │   ├── AIAutomation.tsx
+│   │   └── Contact.tsx
+│   └── App.tsx
+└── index.html
+```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🚀 Getting Started
 
-Follow these steps:
+### Prerequisites
+- Node.js 18+ 
+- npm or bun
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Installation
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+```bash
+# Clone the repository
+git clone https://github.com/surturn/sydney-forge-ai.git
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Navigate to project
+cd sydney-forge-ai
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The site will be available at `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Build for Production
 
-**Use GitHub Codespaces**
+```bash
+npm run build
+npm run preview
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📄 Pages
 
-## What technologies are used for this project?
+| Page | Description |
+|------|-------------|
+| **Home** | Hero section with intro, stats, and specializations |
+| **About** | Journey, tech stack, experience, and education |
+| **Skills** | Technical skills with progress bars, tools, and certifications |
+| **Projects** | Featured projects with live demos and GitHub links |
+| **AI & Automation** | AI capabilities and use cases |
+| **Contact** | Contact methods, availability, and social links |
 
-This project is built with:
+## 🎨 Customization
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Theme Colors
+Edit `src/index.css` to modify the color scheme. The primary color is teal (`173 80% 40%` in HSL).
 
-## How can I deploy this project?
+### Content
+All page content is contained within individual page components in `src/pages/`.
 
-Simply open [Lovable](https://lovable.dev/projects/24b1059e-d804-4b5c-8976-dde99c228106) and click on Share -> Publish.
+### Certificates
+Add certificate images to `public/certificates/` and update the array in `src/pages/Skills.tsx`.
 
-## Can I connect a custom domain to my Lovable project?
+## 📱 Connect
 
-Yes, you can!
+- **GitHub**: [github.com/surturn](https://github.com/surturn)
+- **LinkedIn**: [linkedin.com/in/sydney-kamau-991b362a2](https://www.linkedin.com/in/sydney-kamau-991b362a2)
+- **Instagram**: [@sydneystechhub](https://www.instagram.com/sydneystechhub)
+- **Email**: sydneykamau2005@gmail.com
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 📜 License
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+Built with ❤️ by Sydney Kamau

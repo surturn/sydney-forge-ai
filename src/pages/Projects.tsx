@@ -7,55 +7,37 @@ import { ExternalLink, Github, Play } from 'lucide-react';
 const Projects = () => {
   const projects = [
     {
-      title: 'AI-Powered E-commerce Platform',
-      description: 'Full-stack e-commerce solution with AI-driven product recommendations, automated inventory management, and intelligent customer support chatbot.',
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
-      technologies: ['React', 'Node.js', 'OpenAI API', 'PostgreSQL', 'Stripe'],
-      liveUrl: '#',
-      githubUrl: '#',
+      title: 'School Portfolio – Kipsinendet High School',
+      description: 'Full school portfolio website to enhance public visibility and admissions. Showcased school facilities, environment, and achievements through a modern, responsive UI. Contributed to a record increase in admission inquiries.',
+      image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&h=400&fit=crop',
+      technologies: ['React', 'Tailwind CSS', 'Supabase'],
+      liveUrl: 'https://www.kipsinendetseniorschool.com/',
+      githubUrl: 'https://github.com/surturn/kipsinendet-shine-online',
       featured: true,
     },
     {
-      title: 'Automated Content Management System',
-      description: 'CMS with AI content generation, automated SEO optimization, and smart content scheduling. Reduces content creation time by 70%.',
+      title: 'Farm-Assist (AI Farming Companion)',
+      description: 'AI-powered platform assisting farmers with modern farming techniques and plant disease diagnosis. Integrated AI vision models for pest & disease detection and weather insights. Pilot farmers report improved productivity.',
+      image: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&h=400&fit=crop',
+      technologies: ['React', 'Tailwind CSS', 'Firebase', 'AI Vision', 'Weather API'],
+      liveUrl: 'https://farm-assist-grow.vercel.app',
+      githubUrl: 'https://github.com/surturn/farm-assist-grow',
+      featured: true,
+    },
+    {
+      title: 'Luxury Furniture E-Commerce',
+      description: 'Complete e-commerce platform connecting customers to luxury furniture vendors. Integrated secure M-Pesa payment flows and optimized Supabase backend. Client reported increased sales and easier customer conversions.',
+      image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=400&fit=crop',
+      technologies: ['React', 'Tailwind CSS', 'Supabase', 'M-Pesa Integration'],
+      liveUrl: 'https://luxury-e-commerce-pay.vercel.app',
+      githubUrl: 'https://github.com/surturn/luxury-e-commerce-pay',
+      featured: true,
+    },
+    {
+      title: 'Lead Generation Automation System',
+      description: 'Automated full lead-generation workflows, reducing manual workload for sales teams. Set up pipelines for scraping, filtering, enriching, and routing leads with automated triggers.',
       image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
-      technologies: ['Next.js', 'TypeScript', 'Supabase', 'LangChain', 'TailwindCSS'],
-      liveUrl: '#',
-      githubUrl: '#',
-      featured: true,
-    },
-    {
-      title: 'Smart Analytics Dashboard',
-      description: 'Real-time analytics platform with predictive insights, automated reporting, and AI-powered data visualization for business intelligence.',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
-      technologies: ['React', 'Python', 'FastAPI', 'TensorFlow', 'D3.js'],
-      liveUrl: '#',
-      githubUrl: '#',
-      featured: false,
-    },
-    {
-      title: 'Workflow Automation Suite',
-      description: 'Complete automation platform that connects various business tools, automates repetitive tasks, and provides intelligent workflow optimization.',
-      image: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=600&h=400&fit=crop',
-      technologies: ['Vue.js', 'Node.js', 'MongoDB', 'Docker', 'Zapier API'],
-      liveUrl: '#',
-      githubUrl: '#',
-      featured: false,
-    },
-    {
-      title: 'AI Chat Application',
-      description: 'Real-time chat application with AI moderators, smart translation, sentiment analysis, and automated customer support features.',
-      image: 'https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=600&h=400&fit=crop',
-      technologies: ['React Native', 'Socket.io', 'OpenAI API', 'Express.js', 'Redis'],
-      liveUrl: '#',
-      githubUrl: '#',
-      featured: false,
-    },
-    {
-      title: 'Predictive Maintenance System',
-      description: 'IoT-based system that predicts equipment failures, schedules maintenance automatically, and optimizes operational efficiency using ML algorithms.',
-      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop',
-      technologies: ['Python', 'Django', 'TensorFlow', 'AWS IoT', 'PostgreSQL'],
+      technologies: ['N8N', 'Docker', 'REST APIs', 'Automation'],
       liveUrl: '#',
       githubUrl: '#',
       featured: false,
@@ -77,7 +59,7 @@ const Projects = () => {
         >
           <h1 className="text-4xl font-bold mb-4">My Projects</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A showcase of my work in full-stack development, AI integration, and automation. 
+            A showcase of my work in full-stack development, AI integration, and automation.
             Each project demonstrates my ability to solve complex problems with innovative solutions.
           </p>
         </motion.div>
@@ -109,13 +91,13 @@ const Projects = () => {
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
                   </div>
-                  
+
                   <div className="p-6">
                     <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
                     <p className="text-muted-foreground mb-4 leading-relaxed">
                       {project.description}
                     </p>
-                    
+
                     <div className="flex flex-wrap gap-2 mb-6">
                       {project.technologies.map((tech) => (
                         <Badge key={tech} variant="secondary">
@@ -123,7 +105,7 @@ const Projects = () => {
                         </Badge>
                       ))}
                     </div>
-                    
+
                     <div className="flex gap-3">
                       <Button size="sm" asChild>
                         <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
@@ -170,13 +152,13 @@ const Projects = () => {
                       className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  
+
                   <div className="p-5">
                     <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
                     <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                       {project.description}
                     </p>
-                    
+
                     <div className="flex flex-wrap gap-1 mb-4">
                       {project.technologies.slice(0, 3).map((tech) => (
                         <Badge key={tech} variant="secondary" className="text-xs">
@@ -189,7 +171,7 @@ const Projects = () => {
                         </Badge>
                       )}
                     </div>
-                    
+
                     <div className="flex gap-2">
                       <Button variant="outline" size="sm" asChild className="flex-1">
                         <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
@@ -222,7 +204,7 @@ const Projects = () => {
           <Card className="p-8 bg-accent/50">
             <h3 className="text-2xl font-semibold mb-4">Interested in Working Together?</h3>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              I'm always excited to take on new challenges and bring innovative ideas to life. 
+              I'm always excited to take on new challenges and bring innovative ideas to life.
               Let's discuss how we can create something amazing together.
             </p>
             <Button size="lg" asChild>

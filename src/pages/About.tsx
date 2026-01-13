@@ -12,24 +12,17 @@ const About = () => {
 
   const experience = [
     {
-      title: 'Senior Full-Stack Developer',
-      company: 'Freelance',
-      period: '2022 - Present',
-      description: 'Building custom web applications and AI-powered solutions for startups and enterprises.',
+      title: 'Freelance Full-Stack Developer',
+      company: 'Sydney\'s Hub',
+      period: '2024 - Present',
+      description: 'Delivering websites, automation systems, and AI-powered solutions for clients. Built custom web solutions using React and Supabase/Firebase, automated business processes using N8N workflows.',
       icon: <Briefcase className="h-5 w-5" />,
     },
     {
-      title: 'Software Developer',
-      company: 'Tech Innovators Inc.',
-      period: '2020 - 2022',
-      description: 'Developed scalable web applications and led automation initiatives that improved efficiency by 40%.',
-      icon: <Briefcase className="h-5 w-5" />,
-    },
-    {
-      title: 'Junior Developer',
-      company: 'StartupXYZ',
-      period: '2019 - 2020',
-      description: 'Contributed to frontend development and learned modern development practices.',
+      title: 'AI in the Workplace Simulation',
+      company: 'Datacom (Forage)',
+      period: 'December 2024',
+      description: 'Partnered with generative AI tools for research, design, and debugging. Created client-ready reports and presentations, diagnosed website issues through AI-guided troubleshooting.',
       icon: <Briefcase className="h-5 w-5" />,
     },
   ];
@@ -37,9 +30,16 @@ const About = () => {
   const education = [
     {
       degree: 'Bachelor of Science in Computer Science',
-      institution: 'University of Technology',
-      period: '2015 - 2019',
-      description: 'Focused on software engineering, algorithms, and artificial intelligence.',
+      institution: 'Multimedia University of Kenya',
+      period: '2024 - Present',
+      description: 'Currently pursuing degree with focus on software engineering and AI/ML systems.',
+      icon: <GraduationCap className="h-5 w-5" />,
+    },
+    {
+      degree: 'Certificate in Web & App Full Stack Development',
+      institution: 'Emobilis Technical Institute',
+      period: '2024',
+      description: 'Completed comprehensive full-stack development program covering modern web technologies.',
       icon: <GraduationCap className="h-5 w-5" />,
     },
   ];
@@ -56,7 +56,7 @@ const About = () => {
         >
           <h1 className="text-4xl font-bold mb-4">About Me</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Passionate about creating innovative solutions that bridge the gap between 
+            Passionate about creating innovative solutions that bridge the gap between
             traditional development and cutting-edge AI technology.
           </p>
         </motion.div>
@@ -75,26 +75,29 @@ const About = () => {
                 <h2 className="text-2xl font-semibold mb-4">My Journey</h2>
                 <div className="space-y-4 text-muted-foreground">
                   <p>
-                    I'm a passionate full-stack developer with over 5 years of experience 
-                    building web applications that solve real-world problems. My journey 
-                    began with traditional web development, but I quickly became fascinated 
+                    I'm a passionate full-stack developer with over 5 years of experience
+                    building web applications that solve real-world problems. My journey
+                    began with traditional web development, but I quickly became fascinated
                     by the potential of AI and automation.
                   </p>
                   <p>
-                    Today, I specialize in integrating AI capabilities into modern applications, 
-                    creating intelligent systems that not only function well but truly enhance 
-                    user experiences. From chatbots and recommendation systems to automated 
-                    workflows and data analysis tools, I love exploring the intersection of 
+                    Today, I specialize in integrating AI capabilities into modern applications,
+                    creating intelligent systems that not only function well but truly enhance
+                    user experiences. From chatbots and recommendation systems to automated
+                    workflows and data analysis tools, I love exploring the intersection of
                     code and intelligence.
                   </p>
                   <p>
-                    When I'm not coding, you'll find me exploring the latest AI research, 
-                    contributing to open-source projects, or mentoring aspiring developers. 
+                    When I'm not coding, you'll find me exploring the latest AI research,
+                    contributing to open-source projects, or mentoring aspiring developers.
                     I believe in the power of technology to create positive change in the world.
+                    I'm always looking for new opportunities to learn and grow, so feel free to
+                    reach out if you have any questions or would like to collaborate on a project.
+                    Outside of tech, I'm a big football fan and competitive FIFA player and overall gamer—because strategy, optimization, and decision-making don't stop at code.
                   </p>
                 </div>
               </div>
-              
+
               <div className="space-y-6">
                 <div className="flex items-center text-muted-foreground">
                   <MapPin className="h-5 w-5 mr-3 text-primary" />

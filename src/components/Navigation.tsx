@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Code2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { ThemeToggle } from './ThemeToggle';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,26 +36,28 @@ const Navigation = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                  isActive(item.path)
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${isActive(item.path)
                     ? 'text-primary bg-accent'
                     : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
-                }`}
+                  }`}
               >
                 {item.name}
               </Link>
             ))}
+            <ThemeToggle />
           </div>
 
-          {/* Mobile menu button */}
-          <Button
-            variant="ghost"
-            size="sm"
-            className="md:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </Button>
+          {/* Mobile menu button + theme toggle */}
+          <div className="flex items-center gap-2 md:hidden">
+            <ThemeToggle />
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -72,11 +75,10 @@ const Navigation = () => {
                   <Link
                     key={item.path}
                     to={item.path}
-                    className={`block px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                      isActive(item.path)
+                    className={`block px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${isActive(item.path)
                         ? 'text-primary bg-accent'
                         : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
-                    }`}
+                      }`}
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}

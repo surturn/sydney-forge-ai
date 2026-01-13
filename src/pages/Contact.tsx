@@ -1,13 +1,13 @@
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Github, 
-  Linkedin, 
-  Twitter,
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Github,
+  Linkedin,
+  Instagram,
   Calendar,
   MessageCircle,
   Clock
@@ -18,24 +18,24 @@ const Contact = () => {
     {
       icon: <Mail className="h-6 w-6" />,
       title: 'Email',
-      value: 'sydney.kamau@email.com',
-      href: 'mailto:sydney.kamau@email.com',
+      value: 'sydneykamau2005@gmail.com',
+      href: 'mailto:sydneykamau2005@gmail.com',
       description: 'Best for detailed project discussions',
       color: 'text-blue-500',
     },
     {
       icon: <Phone className="h-6 w-6" />,
       title: 'Phone',
-      value: '+254 700 123 456',
-      href: 'tel:+254700123456',
+      value: '+254 794 817 115',
+      href: 'tel:+254794817115',
       description: 'For urgent matters and quick calls',
       color: 'text-green-500',
     },
     {
       icon: <MessageCircle className="h-6 w-6" />,
       title: 'WhatsApp',
-      value: '+254 700 123 456',
-      href: 'https://wa.me/254700123456',
+      value: '+254 794 817 115',
+      href: 'https://wa.me/254794817115',
       description: 'Quick messages and updates',
       color: 'text-emerald-500',
     },
@@ -43,7 +43,7 @@ const Contact = () => {
       icon: <Calendar className="h-6 w-6" />,
       title: 'Schedule Meeting',
       value: 'Book 30min call',
-      href: '#',
+      href: 'https://calendly.com/sydneykamau2005',
       description: 'Free consultation session',
       color: 'text-purple-500',
     },
@@ -53,25 +53,25 @@ const Contact = () => {
     {
       name: 'GitHub',
       icon: <Github className="h-6 w-6" />,
-      url: 'https://github.com',
+      url: 'https://github.com/surturn',
       color: 'hover:text-gray-700',
     },
     {
       name: 'LinkedIn',
       icon: <Linkedin className="h-6 w-6" />,
-      url: 'https://linkedin.com',
+      url: 'https://www.linkedin.com/in/sydney-kamau-991b362a2',
       color: 'hover:text-blue-600',
     },
     {
-      name: 'Twitter',
-      icon: <Twitter className="h-6 w-6" />,
-      url: 'https://twitter.com',
-      color: 'hover:text-blue-400',
+      name: 'Instagram',
+      icon: <Instagram className="h-6 w-6" />,
+      url: 'https://www.instagram.com/sydneystechhub',
+      color: 'hover:text-pink-500',
     },
   ];
 
   const availability = [
-    { day: 'Monday - Friday', time: '9:00 AM - 6:00 PM EAT' },
+    { day: 'Monday - Friday', time: '5:00 PM - 10:00 PM EAT' },
     { day: 'Saturday', time: '10:00 AM - 2:00 PM EAT' },
     { day: 'Sunday', time: 'Emergency only' },
   ];
@@ -97,7 +97,7 @@ const Contact = () => {
         >
           <h1 className="text-4xl font-bold mb-4">Let's Work Together</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to transform your ideas into reality? I'm here to help you build 
+            Ready to transform your ideas into reality? I'm here to help you build
             innovative solutions that drive your business forward.
           </p>
         </motion.div>
@@ -250,12 +250,12 @@ const Contact = () => {
           <Card className="p-8 bg-accent/50">
             <h3 className="text-2xl font-semibold mb-4">Ready to Start Your Project?</h3>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Whether you have a clear vision or just an idea, I'm here to help you 
+              Whether you have a clear vision or just an idea, I'm here to help you
               turn it into a successful digital solution.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
-                <a href="mailto:sydney.kamau@email.com">
+                <a href="mailto:sydneykamau2005@gmail.com">
                   Send Email <Mail className="ml-2 h-5 w-5" />
                 </a>
               </Button>

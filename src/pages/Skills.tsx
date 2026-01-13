@@ -2,15 +2,15 @@ import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { 
-  Code2, 
-  Database, 
-  Bot, 
-  Cloud, 
-  Smartphone, 
+import {
+  Code2,
+  Database,
+  Bot,
+  Cloud,
+  Smartphone,
   Zap,
   Globe,
-  GitBranch 
+  GitBranch
 } from 'lucide-react';
 
 const Skills = () => {
@@ -88,15 +88,15 @@ const Skills = () => {
   ];
 
   const tools = [
-    'VS Code', 'Git', 'GitHub', 'Postman', 'Figma', 'Notion', 
+    'VS Code', 'Git', 'GitHub', 'Postman', 'Figma', 'Notion',
     'Slack', 'Jira', 'Linear', 'Sentry', 'Analytics', 'Stripe'
   ];
 
   const certifications = [
-    'AWS Certified Developer',
-    'Google Cloud Platform',
-    'Meta React Developer',
-    'MongoDB Certified Developer',
+    'President\'s Award Kenya - Gold Level',
+    'Full Stack Development - Emobilis',
+    'AI in the Workplace - Datacom',
+    'Python Developer Certificate',
   ];
 
   return (
@@ -111,7 +111,7 @@ const Skills = () => {
         >
           <h1 className="text-4xl font-bold mb-4">Skills & Expertise</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A comprehensive overview of my technical capabilities and 
+            A comprehensive overview of my technical capabilities and
             the technologies I use to build exceptional digital experiences.
           </p>
         </motion.div>
@@ -133,7 +133,7 @@ const Skills = () => {
                   </div>
                   <h3 className="text-lg font-semibold">{category.title}</h3>
                 </div>
-                
+
                 <div className="space-y-4">
                   {category.skills.map((skill, skillIndex) => (
                     <div key={skill.name}>
@@ -164,7 +164,7 @@ const Skills = () => {
               Daily tools and technologies I work with to deliver efficient solutions
             </p>
           </div>
-          
+
           <Card className="p-8">
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
               {tools.map((tool, index) => (
@@ -199,24 +199,56 @@ const Skills = () => {
               Professional certifications that validate my expertise
             </p>
           </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {certifications.map((cert, index) => (
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              {
+                name: "President's Award Kenya - Gold Level",
+                image: "/certificates/President's Award.png",
+                issuer: "Awarded by H.E. President William Ruto",
+                date: "October 2024"
+              },
+              {
+                name: "Full Stack Software Development",
+                image: "/certificates/eMoblis Fullstack.jpg",
+                issuer: "Emobilis Technical Institute",
+                date: "November 2024"
+              },
+              {
+                name: "AI in the Workplace - Datacom",
+                image: "/certificates/Datacom certificate.jpg",
+                issuer: "Datacom via Forage",
+                date: "December 2025"
+              },
+              {
+                name: "Python Developer",
+                image: "/certificates/Python Developer_certificate.jpg",
+                issuer: "Sololearn",
+                date: "November 2025"
+              },
+            ].map((cert, index) => (
               <motion.div
-                key={cert}
+                key={cert.name}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="p-6 text-center hover:shadow-glow transition-all duration-300">
-                  <div className="text-primary mb-4">
-                    <GitBranch className="h-8 w-8 mx-auto" />
+                <Card className="overflow-hidden hover:shadow-glow transition-all duration-300 group">
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img
+                      src={cert.image}
+                      alt={cert.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
-                  <h3 className="font-semibold">{cert}</h3>
-                  <Badge variant="secondary" className="mt-2">
-                    Certified
-                  </Badge>
+                  <div className="p-4">
+                    <h3 className="font-semibold mb-1">{cert.name}</h3>
+                    <p className="text-sm text-muted-foreground">{cert.issuer}</p>
+                    <Badge variant="secondary" className="mt-2">
+                      {cert.date}
+                    </Badge>
+                  </div>
                 </Card>
               </motion.div>
             ))}
