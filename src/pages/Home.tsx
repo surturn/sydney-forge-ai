@@ -128,7 +128,7 @@ const Home = () => {
           >
             {[
               { number: '5+', label: 'Projects Delivered' },
-              { number: '1+', label: 'Years Experience' },
+              { number: '5+', label: 'Years Experience' },
               { number: '15+', label: 'Technologies' },
               { number: '5+', label: 'Happy Clients' },
             ].map((stat, index) => (
