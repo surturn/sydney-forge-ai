@@ -2,16 +2,16 @@ import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { 
-  Bot, 
-  Zap, 
-  Brain, 
-  Workflow, 
-  MessageSquare, 
-  BarChart3, 
-  Clock, 
+import {
+  Bot,
+  Zap,
+  Brain,
+  Workflow,
+  MessageSquare,
+  BarChart3,
+  Clock,
   Target,
-  ArrowRight 
+  ArrowRight
 } from 'lucide-react';
 
 const AIAutomation = () => {
@@ -90,7 +90,7 @@ const AIAutomation = () => {
         >
           <h1 className="text-4xl font-bold mb-4">AI & Automation</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Harness the power of artificial intelligence and automation to transform your business processes, 
+            Harness the power of artificial intelligence and automation to transform your business processes,
             reduce costs, and unlock new opportunities for growth.
           </p>
         </motion.div>
@@ -261,18 +261,18 @@ const AIAutomation = () => {
           <Card className="p-8 bg-accent/50">
             <h3 className="text-2xl font-semibold mb-4">Ready to Automate Your Business?</h3>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Let's discuss how AI and automation can transform your operations, 
+              Let's discuss how AI and automation can transform your operations,
               reduce costs, and accelerate your business growth.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
-                <a href="/contact">
+                <a href="https://calendly.com/sydneykamau2005" target="_blank" rel="noopener noreferrer">
                   Schedule Consultation <ArrowRight className="ml-2 h-5 w-5" />
                 </a>
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <a href="/projects">
-                  View AI Projects
+                  View My Work
                 </a>
               </Button>
             </div>
