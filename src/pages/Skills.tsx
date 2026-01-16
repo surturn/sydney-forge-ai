@@ -203,6 +203,13 @@ const Skills = () => {
           <div className="grid md:grid-cols-2 gap-6">
             {[
               {
+                name: "Quantium Software Engineering Job Simulation",
+                image: "/certificates/quantium-cert.png",
+                issuer: "Quantium via Forage",
+                date: "January 2026",
+                description: "Developed an interactive Dash application for price impact analysis"
+              },
+              {
                 name: "President's Award Kenya - Gold Level",
                 image: "/certificates/President's Award.png",
                 issuer: "Awarded by H.E. President William Ruto",
