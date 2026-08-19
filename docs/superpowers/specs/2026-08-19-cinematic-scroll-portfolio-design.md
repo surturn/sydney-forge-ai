@@ -370,9 +370,21 @@ actual list is reported after Stage 1 rather than promised here.
 ## 9. Testing
 
 The existing security tests are static source scanners, not runtime component
-tests, so retiring the pages does not break them structurally. Two assert that
-forms use schema validation; once no `<form>` exists these go vacuous. Confirmed
-empirically during Stage 1 and adjusted if they fail.
+tests, so retiring the pages does not break them structurally — with one
+exception, verified by reading them rather than assumed:
+
+- `security/xss.test.ts:169` ("should use proper form validation") ends in
+  `expect(true).toBe(true)`. Informational. Unaffected.
+- `security/input-sanitization.test.ts:55` ("should use schema validation for
+  forms") asserts `expect(hasZodValidation || hasReactHookForm).toBe(true)` —
+  a project-wide requirement that *some* `.tsx` file mentions zod or
+  react-hook-form. **This fails** once the contact form and those dependencies
+  are removed.
+
+The fix is to correct the assertion's logic, not to keep a dependency alive to
+satisfy it. The test's intent is "forms must be validated", not "this project
+must contain a form", so it becomes conditional on a form existing. Rewritten in
+Stage 1, Task 9.
 
 ### Bundle-size test rewrite
 
