@@ -2,95 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/*
+  DUSK DESIGN SYSTEM
+  Nairobi Dusk palette × Title Card typography, poster weight.
+  Single committed dark look — no light mode, no theme toggle.
+  All colors are HSL triplets. Semantic tokens only.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 215 28% 9%;
+    /* --- Dusk palette --- */
+    --ground: 254 37% 7%;
+    --ground-raised: 257 44% 11%;
+    --ground-lifted: 260 49% 17%;
+    --ink: 38 35% 92%;
+    --ink-muted: 260 17% 63%;
+    --amber: 24 100% 62%;
+    --gold: 42 86% 63%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 215 28% 9%;
+    /* --- Semantic tokens (names retained from FORGE, values remapped) --- */
+    --background: 254 37% 7%;
+    --foreground: 38 35% 92%;
+    --card: 257 44% 11%;
+    --card-foreground: 38 35% 92%;
+    --popover: 257 44% 11%;
+    --popover-foreground: 38 35% 92%;
+    --primary: 24 100% 62%;
+    --primary-foreground: 254 37% 7%;
+    --secondary: 260 49% 17%;
+    --secondary-foreground: 38 35% 92%;
+    --muted: 260 49% 17%;
+    --muted-foreground: 260 17% 63%;
+    --accent: 42 86% 63%;
+    --accent-foreground: 254 37% 7%;
+    --destructive: 0 65% 52%;
+    --destructive-foreground: 38 35% 96%;
+    --border: 260 20% 22%;
+    --input: 260 20% 26%;
+    --ring: 24 100% 62%;
+    --radius: 0rem;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 215 28% 9%;
+    /* --- Motion --- */
+    --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
 
-    --primary: 173 80% 40%;
-    --primary-foreground: 0 0% 98%;
+    /* --- Type scale: perfect fourth (1.333), Title Card jumps --- */
+    --step--1: 0.75rem;
+    --step-0: 1rem;
+    --step-1: 1.333rem;
+    --step-2: 1.777rem;
+    --step-3: 2.369rem;
+    --step-4: 3.157rem;
+    --step-5: 4.209rem;
+    --step-6: 5.61rem;
+    --step-7: 7.478rem;
+    --step-8: 9.969rem;
 
-    --secondary: 215 20% 97%;
-    --secondary-foreground: 215 28% 15%;
-
-    --muted: 215 20% 96%;
-    --muted-foreground: 215 15% 65%;
-
-    --accent: 173 60% 95%;
-    --accent-foreground: 173 80% 40%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 215 20% 90%;
-    --input: 215 20% 90%;
-    --ring: 173 80% 40%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 215 28% 9%;
-    --foreground: 0 0% 98%;
-
-    --card: 215 28% 11%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 215 28% 11%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 173 80% 40%;
-    --primary-foreground: 0 0% 98%;
-
-    --secondary: 215 28% 15%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 215 28% 15%;
-    --muted-foreground: 215 15% 65%;
-
-    --accent: 173 60% 25%;
-    --accent-foreground: 173 80% 40%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 215 28% 15%;
-    --input: 215 28% 15%;
-    --ring: 173 80% 40%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* --- Signature dusk gradient --- */
+    --dusk: radial-gradient(120% 85% at 80% 6%,
+              hsl(var(--amber) / .40) 0%,
+              hsl(var(--gold) / .12) 28%,
+              transparent 64%),
+            linear-gradient(180deg,
+              hsl(var(--ground-lifted)) 0%,
+              hsl(258 47% 11%) 48%,
+              hsl(var(--ground)) 100%);
   }
 }
 
@@ -100,37 +75,79 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground font-sans antialiased;
+    line-height: 1.6;
   }
 
-  /* Custom scrollbar */
+  ::selection {
+    background: hsl(var(--amber) / 0.25);
+    color: hsl(var(--ink));
+  }
+
+  /* Accessible keyboard focus on every interactive element. */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
+    height: 8px;
   }
-  
   ::-webkit-scrollbar-track {
-    @apply bg-muted;
+    @apply bg-transparent;
   }
-  
   ::-webkit-scrollbar-thumb {
-    @apply bg-primary/30 rounded-full;
+    @apply bg-primary/30;
+    border-radius: 0;
   }
-  
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-primary/50;
+    @apply bg-primary/60;
+  }
+
+  /*
+   * Belt and braces. The scenes also branch on prefers-reduced-motion in JS
+   * (Lenis never initialises, transforms resolve to their end values); this
+   * kills any CSS animation or transition that slips past that branch.
+   */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
-@layer utilities {
-  .text-gradient {
-    @apply bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent;
+@layer components {
+  /* Display: poster-weight didone. Never lighter than 700. */
+  .display {
+    @apply font-display;
+    font-weight: 700;
+    font-variation-settings: 'opsz' 24;
+    letter-spacing: -0.015em;
+    line-height: 0.92;
   }
-  
-  .shadow-glow {
-    box-shadow: 0 4px 14px 0 hsl(var(--primary) / 0.15);
+
+  /* Monospace eyebrow / meta register */
+  .kicker {
+    @apply font-mono uppercase;
+    font-size: var(--step--1);
+    letter-spacing: 0.18em;
+    color: hsl(var(--amber));
   }
-  
-  .hero-gradient {
-    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--accent)) 100%);
+
+  .kicker-muted {
+    @apply font-mono uppercase;
+    font-size: var(--step--1);
+    letter-spacing: 0.18em;
+    color: hsl(var(--ink-muted));
+  }
+
+  .dusk-bg {
+    background: var(--dusk);
   }
 }
