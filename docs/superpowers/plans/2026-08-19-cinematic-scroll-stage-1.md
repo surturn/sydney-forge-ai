@@ -21,6 +21,8 @@
 - **`index.html` must keep** `rel="preconnect"` to both Google Fonts hosts, `crossorigin` on the `gstatic` link, and `display=swap`. Three existing tests assert these (`security/headers.test.ts:72,79`, `speed/core-web-vitals.test.ts:38,238`).
 - **Do not install `three`, `@react-three/fiber`, or `@react-three/drei` in this stage.** Stage 1 has no WebGL; unused deps are deferred to Stage 3 (deviation from spec §7, which listed them under "add" without staging them).
 - Content comes only from `src/content/content.ts`. No copy hardcoded in scene components.
+- **`src/components/Magnetic.tsx` is intentionally unused in this stage.** It is retained for Scene 5's links in Stage 2. It is not dead code to be deleted, and it must not be wired into a Stage 1 scene to justify its presence.
+- **The FORGE design system no longer exists.** It was uncommitted work, discarded before Stage 1 began at the repo owner's instruction. `src/index.css` is the pre-FORGE 136-line file and `tailwind.config.ts` has only `sans` in `fontFamily`. Do not look for `.kicker`, `.display`, `.hover-cell`, `body::before` grain, or a `prefers-reduced-motion` block in the current source — Task 1 creates all of them.
 - **File consolidation vs spec §6.** The spec's file list names `lib/usePointerCoarse.ts` and `lib/useSceneProgress.ts` as separate modules. This plan folds the first into `lib/useMediaQuery.ts` (it is one of three hooks over the same `matchMedia` primitive) and the second into `lib/scrollStore.ts` (scene progress is computed by the same rAF tick that owns `scrollState`, and splitting them would mean exporting the mutable object across a boundary for no gain). Everything else in §6 is built exactly as listed.
 
 ---
@@ -108,27 +110,21 @@ Expected: FAIL — `--ground` not found in `src/index.css`.
 
 - [ ] **Step 3: Rewrite the token layer in `src/index.css`**
 
-The current file has two `@layer base` blocks: the first holds the FORGE `:root`
-and `.dark` token definitions, the second holds element rules. **Delete the
-first block entirely** (including all of `.dark`) and put the code below in its
-place. **Keep the second `@layer base` block with three deletions** — the
-`*`/`html`/`body` rules, `::selection`, `:focus-visible`, the scrollbar rules,
-and the `prefers-reduced-motion` block all carry over unchanged, but delete:
+**Replace the entire contents of `src/index.css` with the code below.** The
+existing file is 136 lines: a `@layer base` holding `:root` and `.dark` token
+definitions, a second `@layer base` with `*`/`body`/scrollbar rules, and a
+`@layer utilities` holding `.text-gradient`, `.shadow-glow`, and `.hero-gradient`.
+None of it survives — the tokens are replaced, `.dark` has no meaning without a
+light mode, and the three utilities belong to components Task 9 deletes.
 
-1. the `body::before` film-grain overlay — `SceneFrame` paints grain per scene
-   in Task 5, and keeping both would double it and fight the scenes' stacking
-   contexts;
-2. the `.display` rule in that block — the `@layer components` `.display` below
-   replaces it, and two competing definitions is exactly the kind of drift that
-   makes type look wrong for reasons nobody can find;
-3. `font-feature-settings: "ss01", "cv01"` on `body` — those are Inter
-   stylistic sets that Bodoni Moda and Inter Tight do not share.
+Two things the new file deliberately does **not** carry:
 
-**Delete the old `@layer components` and `@layer
-utilities` blocks** (`.kicker`, `.panel`, `.hover-cell`, `.section`, `.measure`,
-`.text-gradient`, `.bg-grid`, `.ember-glow`, `.link-underline`) — they belong to
-the retired FORGE system, and the components that used them are deleted in
-Task 9. The `.display` rule below supersedes the old one.
+1. **No `body::before` film grain.** `SceneFrame` paints grain per scene in
+   Task 5. A global fixed overlay would double it and fight the scenes'
+   stacking contexts.
+2. **No `scroll-behavior: smooth` on `html`.** Lenis owns smooth scrolling;
+   a CSS smooth-scroll on top of it fights the engine. Anchor clicks from the
+   nav dots therefore jump instantly, which is correct and accessible.
 
 ```css
 @tailwind base;
@@ -199,6 +195,59 @@ Task 9. The `.display` rule below supersedes the old one.
               hsl(var(--ground-lifted)) 0%,
               hsl(258 47% 11%) 48%,
               hsl(var(--ground)) 100%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    line-height: 1.6;
+  }
+
+  ::selection {
+    background: hsl(var(--amber) / 0.25);
+    color: hsl(var(--ink));
+  }
+
+  /* Accessible keyboard focus on every interactive element. */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/30;
+    border-radius: 0;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/60;
+  }
+
+  /*
+   * Belt and braces. The scenes also branch on prefers-reduced-motion in JS
+   * (Lenis never initialises, transforms resolve to their end values); this
+   * kills any CSS animation or transition that slips past that branch.
+   */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
@@ -1792,7 +1841,7 @@ The cutover. Scenes 2–5 land as labelled stub sections so the scroll spine is 
 - Create: `src/scenes/SceneStub.tsx`
 - Modify: `vercel.json`
 - Modify: `src/__tests__/security/input-sanitization.test.ts:37-56`
-- Delete: `src/pages/`, `src/components/Layout.tsx`, `src/components/Navigation.tsx`, `src/components/ThemeProvider.tsx`, `src/components/ThemeToggle.tsx`, `src/components/PageHeader.tsx`, `src/components/Footer.tsx`, `src/components/BlurText.tsx`, `src/components/RevealHeading.tsx`, `src/components/SectionLabel.tsx`, `src/App.css`
+- Delete: `src/pages/`, `src/components/Layout.tsx`, `src/components/Navigation.tsx`, `src/components/ThemeProvider.tsx`, `src/components/ThemeToggle.tsx`, `src/App.css`
 - Test: `src/__tests__/App.test.tsx`
 
 **Interfaces:**
@@ -1917,10 +1966,11 @@ export default App;
 git rm -r src/pages
 git rm src/components/Layout.tsx src/components/Navigation.tsx \
        src/components/ThemeProvider.tsx src/components/ThemeToggle.tsx \
-       src/components/PageHeader.tsx src/components/Footer.tsx \
-       src/components/BlurText.tsx src/components/RevealHeading.tsx \
-       src/components/SectionLabel.tsx src/App.css
+       src/App.css
 ```
+
+`src/components/Magnetic.tsx` stays — it is retained for Scene 5 in Stage 2 and
+is deliberately unused until then. Do not delete it and do not wire it up.
 
 - [ ] **Step 6: Replace `vercel.json` with redirects plus a catch-all**
 
