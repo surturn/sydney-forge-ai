@@ -2170,3 +2170,45 @@ After Task 10, Stage 1 is done when all of the following hold:
 - [ ] Enabling reduced motion at the OS level disables smooth scrolling and renders every scene statically and completely.
 - [ ] Tabbing through the page reaches all six nav links and every scene's content in order.
 - [ ] `grep -r "794 817 115\|+254" src/ index.html` returns nothing.
+
+---
+
+## Task 10 record — what actually came out
+
+**Packages removed (42):**
+
+- Router and data layer: `react-router-dom`, `@tanstack/react-query`
+- Form stack: `react-hook-form`, `@hookform/resolvers`, `zod`
+- Page-only widgets: `recharts`, `embla-carousel-react`, `react-day-picker`,
+  `date-fns`, `cmdk`, `vaul`, `input-otp`, `react-resizable-panels`
+- Theming and toasts: `next-themes`, `sonner`
+- All 27 `@radix-ui/*` packages — every `ui/` file that consumed them was deleted.
+
+**Files removed:** all of `src/pages/`, `src/components/{Layout,Navigation,ThemeProvider,ThemeToggle}.tsx`,
+`src/App.css`, all 49 files under `src/components/ui/`, and the two hooks they
+stranded (`src/hooks/use-toast.ts`, `src/hooks/use-mobile.tsx`).
+`src/components/Magnetic.tsx` was deliberately kept for Stage 2.
+
+**Baseline for Stage 4's bundle-test rewrite** (`npm run build`, production):
+
+| Asset | Raw | Gzip |
+| --- | --- | --- |
+| `index.html` | 1.82 kB | 0.76 kB |
+| `assets/index-*.css` | 13.57 kB | 3.80 kB |
+| `assets/index-*.js` | 294.16 kB | 95.07 kB |
+
+CSS fell from 60.09 kB to 13.57 kB raw (10.98 kB → 3.80 kB gzip) once the
+shadcn surface went. JS was unchanged at 294.16 kB — the deleted packages were
+already tree-shaken out of the old build, so the win here is install size,
+audit surface, and maintenance, not shipped bytes.
+
+**Left installed, unreferenced.** `class-variance-authority` and `lucide-react`
+have no importer left in `src/`. They were outside this task's removal list and
+`lucide-react` is a plausible Stage 2 need (Scene 5's links), so both were kept
+rather than removed on a guess. Revisit at the start of Stage 2.
+
+**Known-failing, out of scope.** `src/__tests__/security/dependencies.test.ts`
+reports 3 critical advisories, all in devDependencies that ship nothing:
+`vitest` / `@vitest/ui` (UI server arbitrary file read) and `basic-ftp` reached
+through `lighthouse` → `puppeteer`. Pre-existing before Stage 1; a tooling
+upgrade, not a prune.
