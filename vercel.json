@@ -1,8 +1,12 @@
 {
+    "redirects": [
+        { "source": "/about", "destination": "/", "permanent": true },
+        { "source": "/skills", "destination": "/", "permanent": true },
+        { "source": "/projects", "destination": "/", "permanent": true },
+        { "source": "/ai-automation", "destination": "/", "permanent": true },
+        { "source": "/contact", "destination": "/", "permanent": true }
+    ],
     "rewrites": [
-        {
-            "source": "/(.*)",
-            "destination": "/"
-        }
+        { "source": "/(.*)", "destination": "/" }
     ]
 }
