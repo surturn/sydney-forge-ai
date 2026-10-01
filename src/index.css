@@ -161,6 +161,30 @@
     );
   }
 
+  [data-film-spacer][data-mode='film'] .film-stage {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    overflow: hidden;
+  }
+  [data-film-spacer][data-mode='film'] .film-shot {
+    position: absolute;
+    inset: 0;
+    visibility: hidden;
+  }
+  [data-film-spacer][data-mode='film'] .film-shot:first-child {
+    visibility: visible;
+  }
+  [data-film-spacer][data-mode='article'] .film-shot {
+    position: relative;
+    padding-block: 6rem;
+  }
+  @media (max-width: 767px) {
+    [data-film-spacer][data-mode='article'] .film-shot {
+      padding-block: 4rem;
+    }
+  }
+
   .paper-texture::after {
     content: '';
     position: fixed;
