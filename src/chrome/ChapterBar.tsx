@@ -7,6 +7,7 @@ import { useFilmStore } from '@/film/store';
 import { ModeToggle } from './ModeToggle';
 
 const ORDER: Chapter[] = ['cover', 'profile', 'work', 'contact'];
+const NUMERAL: Record<Chapter, string> = { cover: 'I', profile: 'II', work: 'III', contact: 'IV' };
 
 /**
  * Fixed top bar: chapters present in the film, the mode toggle, and the
@@ -25,7 +26,7 @@ export function ChapterBar() {
 
   return (
     <header
-      className="fixed inset-x-0 top-0 z-50 flex items-center justify-between gap-4 border-b border-ink/15 bg-paper/90 px-4 md:px-8"
+      className="fixed inset-x-0 top-0 z-50 flex flex-nowrap items-center justify-between gap-2 sm:gap-4 border-b border-ink/15 bg-paper/90 px-4 md:px-8"
       style={{ paddingTop: 'env(safe-area-inset-top, 0px)' }}
     >
       <nav aria-label="Chapters" className="flex items-center gap-1 overflow-x-auto py-2">
@@ -34,19 +35,22 @@ export function ChapterBar() {
             key={c}
             type="button"
             aria-current={current === c ? 'step' : undefined}
-            className={`meta min-h-[28px] px-2 ${current === c ? 'bg-ink text-paper' : 'hover:text-cobalt'}`}
+            aria-label={content.site.chapters[c]}
+            className={`meta min-h-[28px] min-w-[28px] px-2 ${current === c ? 'bg-ink text-paper' : 'hover:text-cobalt'}`}
             onClick={() => {
               const first = engine.placed.find((s) => s.chapter === c);
               if (first) seekToShot(first.id);
             }}
           >
-            {content.site.chapters[c]}
+            {/* Numerals on phones keep the bar to one line at 375px. */}
+            <span className="sm:hidden">{NUMERAL[c]}</span>
+            <span className="hidden sm:inline">{content.site.chapters[c]}</span>
           </button>
         ))}
       </nav>
       <div className="flex items-center gap-2 py-2">
         <ModeToggle />
-        <button type="button" className="btn-signal min-h-[44px] text-sm" onClick={() => seekToShot('back-cover')}>
+        <button type="button" className="btn-signal min-h-[44px] shrink-0 px-3 text-sm sm:px-5" onClick={() => seekToShot('back-cover')}>
           Work with me
         </button>
       </div>

@@ -24,8 +24,10 @@ describe('Solves', () => {
     render(<SolvesShot.Component />)
     const items = screen.getAllByRole('listitem').filter((li) => li.hasAttribute('data-condition'))
     expect(items).toHaveLength(6)
-    expect(within(items[1]).getByRole('link', { name: /eventify/i })).toHaveAttribute('href', '#shot-project-eventify')
-    expect(within(items[4]).getByRole('link', { name: /invonics automations/i })).toBeInTheDocument()
+    // Project shots arrive in Stage B; until then the chips are labels, not dead links.
+    expect(within(items[1]).getByText('Eventify')).toHaveClass('chip')
+    expect(within(items[4]).getByText('Invonics automations')).toHaveClass('chip')
+    expect(within(items[1]).queryByRole('link')).toBeNull()
   })
 })
 

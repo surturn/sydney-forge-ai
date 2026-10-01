@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from 'react';
 import { Stage } from '@/film/Stage';
-import { Reel } from '@/film/Reel';
+import { Reel, reelIsActive } from '@/film/Reel';
 import { useModeBootstrap } from '@/film/useModeBootstrap';
 import { useFilmStore } from '@/film/store';
 import { ChapterBar } from '@/chrome/ChapterBar';
@@ -12,7 +12,7 @@ const App = () => {
   const pageRef = useRef<HTMLDivElement>(null);
   // While the reel covers the screen, everything behind it is unreachable,
   // so Skip intro is genuinely the first stop for keyboard and AT users.
-  const reelActive = useFilmStore((s) => s.mode === 'film' && s.reelState !== 'done');
+  const reelActive = useFilmStore((s) => reelIsActive(s.mode, s.reelState));
 
   useLayoutEffect(() => {
     pageRef.current?.toggleAttribute('inert', reelActive);

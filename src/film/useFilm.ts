@@ -83,6 +83,7 @@ export function useFilm(
     return () => {
       ctx.revert();
       gsap.ticker.remove(tick);
+      gsap.ticker.lagSmoothing(500, 33); // GSAP's default; the setting is global
       lenis.destroy();
       engine.lenis = null;
     };

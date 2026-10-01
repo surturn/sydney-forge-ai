@@ -10,7 +10,7 @@ import { execSync } from 'child_process'
 
 describe('Dependency Security Tests', () => {
     describe('npm Audit', () => {
-        it('should not have critical vulnerabilities', () => {
+        it('should not have critical vulnerabilities', { timeout: 30000 }, () => {
             try {
                 // Run npm audit and capture output
                 const auditOutput = execSync('npm audit --json', {
@@ -42,7 +42,7 @@ describe('Dependency Security Tests', () => {
             }
         })
 
-        it('should report high severity vulnerabilities (warning)', () => {
+        it('should report high severity vulnerabilities (warning)', { timeout: 30000 }, () => {
             try {
                 const auditOutput = execSync('npm audit --json', {
                     encoding: 'utf-8',
@@ -73,7 +73,7 @@ describe('Dependency Security Tests', () => {
             }
         })
 
-        it('should provide vulnerability summary', () => {
+        it('should provide vulnerability summary', { timeout: 30000 }, () => {
             try {
                 const auditOutput = execSync('npm audit --json', {
                     encoding: 'utf-8',

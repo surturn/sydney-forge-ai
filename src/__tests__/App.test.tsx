@@ -10,7 +10,8 @@ beforeEach(() => {
   useFilmStore.setState({ activeShot: 'cover', mode: 'film', modeReason: 'default', reelState: 'pending' })
 })
 
-describe('App', () => {
+// The first render pays the cold import of GSAP, Lenis and the content; under a parallel suite that can exceed 5s.
+describe('App', { timeout: 20000 }, () => {
   it('renders the Stage A shots in film order', () => {
     const { container } = render(<App />)
     const ids = [...container.querySelectorAll('[data-shot]')].map((el) => el.getAttribute('data-shot'))

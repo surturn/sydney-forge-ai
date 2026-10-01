@@ -20,7 +20,7 @@ describe('ChapterBar', () => {
   it('lists only chapters that have shots, marking the current one', () => {
     render(<ChapterBar />)
     const nav = screen.getByRole('navigation', { name: 'Chapters' })
-    const buttons = [...nav.querySelectorAll('button')].map((b) => b.textContent)
+    const buttons = [...nav.querySelectorAll("button")].map((b) => b.getAttribute("aria-label"))
     expect(buttons).toEqual(['Cover', 'Profile', 'Contact'])
     expect(screen.getByRole('button', { name: 'Profile' })).toHaveAttribute('aria-current', 'step')
   })

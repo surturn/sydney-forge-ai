@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useRef } from 'react';
 import type gsap from 'gsap';
-import { readStored, REEL_KEY, useFilmStore, writeStored, type Mode } from './store';
+import { readStored, REEL_KEY, useFilmStore, writeStored, type Mode, type ReelState } from './store';
 import { buildReel } from './reelTimeline';
 import { ReelControls } from '@/chrome/ReelControls';
 
@@ -8,6 +8,13 @@ const WORDS = ['PAYMENTS.', 'OFFLINE.', 'AI.', 'LOAD.', 'NAIROBI.'];
 
 export function shouldPlayReel(mode: Mode): boolean {
   return mode === 'film' && readStored(REEL_KEY, true) !== '1';
+}
+
+/** Whether the reel occupies the screen. 'pending' counts only if it is going to play. */
+export function reelIsActive(mode: Mode, reelState: ReelState): boolean {
+  if (mode !== 'film') return false;
+  if (reelState === 'pending') return shouldPlayReel(mode);
+  return reelState === 'playing' || reelState === 'paused';
 }
 
 /**
@@ -19,6 +26,7 @@ export function Reel() {
   const reelState = useFilmStore((s) => s.reelState);
   const overlayRef = useRef<HTMLDivElement>(null);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
+  const refocus = useRef(false);
 
   useLayoutEffect(() => {
     if (reelState === 'pending') {
@@ -27,6 +35,8 @@ export function Reel() {
   }, [mode, reelState]);
 
   const finish = useCallback(() => {
+    // The focused control is about to unmount; hand focus to the cover instead of <body>.
+    refocus.current = !!document.activeElement?.closest('[data-reel-controls]');
     // progress(1) before kill() lands every `from` tween on the cover at rest.
     tlRef.current?.progress(1).kill();
     tlRef.current = null;
@@ -34,7 +44,15 @@ export function Reel() {
     useFilmStore.getState().setReelState('done');
   }, []);
 
-  const active = mode === 'film' && (reelState === 'playing' || reelState === 'paused' || reelState === 'pending');
+  const active = reelIsActive(mode, reelState);
+
+  // Passive effect: runs after App's layout effect has lifted inert from the page.
+  useEffect(() => {
+    if (reelState === 'done' && refocus.current) {
+      refocus.current = false;
+      document.getElementById('shot-cover-title')?.focus({ preventScroll: true });
+    }
+  }, [reelState]);
 
   useLayoutEffect(() => {
     if (!active || !overlayRef.current || tlRef.current) return;
