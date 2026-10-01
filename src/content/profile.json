@@ -9,11 +9,10 @@
   "company": "Invonics Technologies",
   "companyUrl": "https://invonicstechnologies.com",
   "portrait": {
-    "src": "/images/placeholders/portrait.svg",
+    "src": "/images/portrait.webp",
     "alt": "Portrait of Sydney Kamau",
-    "width": 1200,
-    "height": 1500,
-    "placeholder": true
+    "width": 864,
+    "height": 1080
   },
   "cover": {
     "kicker": "Full-stack engineer · AI systems",

@@ -28,13 +28,14 @@ describe('Cover', () => {
     const img = screen.getByRole('img', { name: /portrait of sydney kamau/i })
     expect(img).toHaveAttribute('loading', 'eager')
     expect(img).toHaveAttribute('fetchpriority', 'high')
-    expect(img).toHaveAttribute('width', '1200')
-    expect(img).toHaveAttribute('height', '1500')
+    expect(img).toHaveAttribute('width', '864')
+    expect(img).toHaveAttribute('height', '1080')
   })
 
-  it('captions placeholder figures as placeholders', () => {
+  it('uses the real portrait, so its caption does not say placeholder', () => {
     render(<CoverShot.Component />)
-    expect(screen.getByText(/placeholder/i)).toBeInTheDocument()
+    expect(screen.getByRole('img', { name: /portrait of sydney kamau/i })).toHaveAttribute('src', '/images/portrait.webp')
+    expect(screen.getByText(/fig\. 1/i).textContent).not.toMatch(/placeholder/i)
   })
 })
 
