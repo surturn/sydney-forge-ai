@@ -18,9 +18,12 @@ export function buildReel(overlay: HTMLElement, cover: HTMLElement | null): gsap
     0,
   );
 
+  // Each word starts parked below its one-line mask by a CSS translate so nothing
+  // flashes before this runs. GSAP would read that as a pixel offset and add it
+  // to yPercent, landing exits back at the centre, so y is zeroed here.
   q('[data-reel="word"]').forEach((word: Element, i: number) => {
     const at = 0.8 + i * 0.25;
-    tl.fromTo(word, { yPercent: 110 }, { yPercent: 0, duration: 0.14 }, at).to(
+    tl.fromTo(word, { y: 0, yPercent: 110 }, { y: 0, yPercent: 0, duration: 0.14 }, at).to(
       word,
       { yPercent: -110, duration: 0.14, ease: 'power3.in' },
       at + 0.14,
