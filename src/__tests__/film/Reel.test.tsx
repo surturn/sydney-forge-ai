@@ -55,6 +55,20 @@ describe('Reel', () => {
     expect(useFilmStore.getState().reelState).toBe('playing')
   })
 
+  it('Enter or Space on Pause pauses rather than ending the reel', () => {
+    render(<Reel />)
+    const pause = screen.getByRole('button', { name: /pause/i })
+    act(() => { fireEvent.keyDown(pause, { key: 'Enter' }) })
+    act(() => { fireEvent.keyDown(pause, { key: ' ' }) })
+    expect(useFilmStore.getState().reelState).toBe('playing')
+  })
+
+  it('any scroll (scrollbar drag, autoscroll) ends the reel', () => {
+    render(<Reel />)
+    act(() => { fireEvent.scroll(window) })
+    expect(useFilmStore.getState().reelState).toBe('done')
+  })
+
   it('Pause toggles to Play', () => {
     render(<Reel />)
     fireEvent.click(screen.getByRole('button', { name: /pause/i }))

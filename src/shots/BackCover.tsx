@@ -12,7 +12,7 @@ const projectMail = `mailto:${contact.email}?subject=${encodeURIComponent(contac
 function Component() {
   return (
     <Shot def={def}>
-      <div className="mx-auto flex h-full max-w-7xl flex-col justify-center px-4 pt-20 md:px-8">
+      <div className="mx-auto flex h-full max-w-7xl flex-col justify-safe-center px-4 pt-20 md:px-8">
         <div data-livery className="livery" aria-hidden="true" />
         <h2 id="shot-back-cover-title" tabIndex={-1} className="display mt-8 text-[clamp(3rem,11vw,var(--step-7))]">
           {contact.heading}
@@ -51,6 +51,6 @@ export const BackCoverShot: ShotModule = {
     tl.from(root.querySelector('[data-livery]'), { scaleX: 0, transformOrigin: 'left', duration: 0.3 }, 0.1)
       .from(root.querySelector('h2'), { yPercent: 60, autoAlpha: 0, duration: 0.3 }, 0.25)
       .from(root.querySelectorAll('[data-door]'), { scale: 1.6, rotate: -6, autoAlpha: 0, stagger: 0.08, duration: 0.25, ease: 'back.out(2)' }, 0.45)
-      .from(root.querySelectorAll('[data-link]'), { yPercent: 50, autoAlpha: 0, stagger: 0.04, duration: 0.2 }, 0.6);
+      .from(root.querySelectorAll('[data-link]'), { yPercent: 50, autoAlpha: 0, stagger: 0.03, duration: 0.2 }, 0.5);
   },
 };

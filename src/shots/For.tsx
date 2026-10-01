@@ -9,7 +9,7 @@ const f = content.profile.for;
 function Component() {
   return (
     <Shot def={def}>
-      <div className="mx-auto flex h-full max-w-7xl flex-col justify-center px-4 pt-20 md:px-8">
+      <div className="mx-auto flex h-full max-w-7xl flex-col justify-safe-center px-4 pt-20 md:px-8">
         <p className="kicker">II · Profile · For</p>
         <h2 id="shot-for-title" tabIndex={-1} className="display mt-3 text-[clamp(2.5rem,7vw,var(--step-6))]">
           {f.heading}

@@ -51,17 +51,24 @@ export function Reel() {
   useEffect(() => {
     if (!active) return;
     const end = () => finish();
-    // Tab and Shift move focus to the reel's own controls; they must not end it.
+    // Tab and Shift move focus to the reel's own controls, and Enter/Space
+    // activate them; none of those may end the reel.
     const onKey = (e: KeyboardEvent) => {
-      if (e.key !== 'Tab' && e.key !== 'Shift') finish();
+      if (e.key === 'Tab' || e.key === 'Shift') return;
+      if (e.target instanceof Element && e.target.closest('[data-reel-controls]')) return;
+      finish();
     };
     const opts = { passive: true } as const;
     window.addEventListener('wheel', end, opts);
     window.addEventListener('touchmove', end, opts);
+    // Catches every other way of scrolling (scrollbar drag, autoscroll), so the
+    // reel never fights the scrubbed film for the cover's elements.
+    window.addEventListener('scroll', end, opts);
     window.addEventListener('keydown', onKey);
     return () => {
       window.removeEventListener('wheel', end);
       window.removeEventListener('touchmove', end);
+      window.removeEventListener('scroll', end);
       window.removeEventListener('keydown', onKey);
     };
   }, [active, finish]);

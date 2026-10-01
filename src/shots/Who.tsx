@@ -10,7 +10,7 @@ const { profile } = content;
 function Component() {
   return (
     <Shot def={def}>
-      <div className="mx-auto grid h-full max-w-7xl items-center gap-10 px-4 pt-20 md:grid-cols-[1fr_1fr] md:px-8">
+      <div className="mx-auto grid h-full max-w-7xl items-safe-center gap-10 px-4 pt-20 md:grid-cols-[1fr_1fr] md:px-8">
         <div>
           <p className="kicker">II · Profile · Who</p>
           <h2 id="shot-who-title" tabIndex={-1} className="display mt-3 text-[clamp(3rem,10vw,var(--step-7))]">

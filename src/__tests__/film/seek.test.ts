@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { seekToShot } from '@/film/seek'
 import { engine } from '@/film/engine'
 import { placeShots } from '@/film/registry'
@@ -44,6 +44,38 @@ describe('seekToShot', () => {
     useFilmStore.setState({ mode: 'article' })
     expect(seekToShot('project-eventify', 'b')).toBe(true)
     expect(document.activeElement?.id).toBe('shot-b-title')
+  })
+
+  describe('in film mode, where off-screen shots are inert', () => {
+    // jsdom ignores `inert`; reproduce the browser rule that focus() inside an inert subtree is a no-op.
+    let realFocus: typeof HTMLElement.prototype.focus
+    beforeEach(() => {
+      realFocus = HTMLElement.prototype.focus
+      HTMLElement.prototype.focus = function (this: HTMLElement, opts?: FocusOptions) {
+        if (this.closest('[inert]')) return
+        realFocus.call(this, opts)
+      }
+      useFilmStore.setState({ mode: 'film' })
+      document.getElementById('shot-b')!.setAttribute('inert', '')
+    })
+    afterEach(() => {
+      HTMLElement.prototype.focus = realFocus
+    })
+
+    it('moves focus to the target title even though it was inert (no Lenis)', () => {
+      seekToShot('b')
+      expect(document.activeElement?.id).toBe('shot-b-title')
+    })
+
+    it('moves focus once the Lenis scroll lands, not before', () => {
+      let landed: (() => void) | undefined
+      engine.lenis = { scrollTo: vi.fn((_y: number, o: { onComplete?: () => void }) => { landed = o.onComplete }) } as never
+      seekToShot('b')
+      expect(landed).toBeTypeOf('function')
+      document.getElementById('shot-b')!.setAttribute('inert', '') // re-inerted while scrolling past other shots
+      landed!()
+      expect(document.activeElement?.id).toBe('shot-b-title')
+    })
   })
 
   it('returns false without throwing when neither shot exists', () => {

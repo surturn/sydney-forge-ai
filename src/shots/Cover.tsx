@@ -20,7 +20,7 @@ function Component() {
         </div>
         <div className="livery mt-2" aria-hidden="true" />
 
-        <div className="grid flex-1 items-center gap-8 py-6 md:grid-cols-[minmax(0,1fr)_minmax(0,22rem)]">
+        <div className="grid flex-1 items-safe-center gap-8 py-6 md:grid-cols-[minmax(0,1fr)_minmax(0,22rem)]">
           <div>
             <p className="kicker">{profile.cover.kicker}</p>
             <h1 id="shot-cover-title" tabIndex={-1} className="display mt-3 text-[clamp(3.5rem,13vw,var(--step-8))] text-ink">
@@ -75,7 +75,7 @@ function Component() {
             media={profile.portrait}
             caption="Fig. 1 — the engineer, Nairobi"
             priority
-            className="mx-auto w-[min(70vw,22rem)] md:w-full"
+            className="mx-auto w-[min(48vw,24svh)] md:w-full"
           />
         </div>
       </div>

@@ -185,6 +185,14 @@
     }
   }
 
+  /* Overflow spills downward, where fit-to-frame can measure and scale it. */
+  .justify-safe-center {
+    justify-content: safe center;
+  }
+  .items-safe-center {
+    align-items: safe center;
+  }
+
   .paper-texture::after {
     content: '';
     position: fixed;

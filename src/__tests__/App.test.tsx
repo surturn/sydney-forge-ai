@@ -28,6 +28,14 @@ describe('App', () => {
     expect(screen.getByRole('link', { name: /skip to contact/i })).toBeInTheDocument()
   })
 
+  it('while the reel plays, Skip intro is the first focusable control and everything behind the overlay is inert', () => {
+    const { container } = render(<App />)
+    const focusable = [...container.querySelectorAll<HTMLElement>('a[href], button')].filter((el) => !el.closest('[inert]'))
+    expect(focusable[0]).toHaveAccessibleName(/skip intro/i)
+    expect(container.querySelector('header')!.closest('[inert]')).not.toBeNull()
+    expect(container.querySelector('main')!.closest('[inert]')).not.toBeNull()
+  })
+
   it('in reduced motion, renders the article: no reel, nothing inert, every shot heading reachable', () => {
     setMatchMedia({ '(prefers-reduced-motion: reduce)': true })
     const { container } = render(<App />)

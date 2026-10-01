@@ -10,7 +10,7 @@ const { solves } = content.profile;
 function Component() {
   return (
     <Shot def={def}>
-      <div className="mx-auto flex h-full max-w-7xl flex-col justify-center px-4 pt-20 md:px-8">
+      <div className="mx-auto flex h-full max-w-7xl flex-col justify-safe-center px-4 pt-20 md:px-8">
         <p className="kicker">II · Profile · Solves</p>
         <h2 id="shot-solves-title" tabIndex={-1} className="display mt-3 max-w-4xl text-[clamp(2.25rem,6vw,var(--step-5))]">
           {solves.heading}

@@ -10,7 +10,7 @@ const FILL = ['bg-cobalt text-paper', 'bg-lime text-ink', 'bg-paper-raised text-
 function Component() {
   return (
     <Shot def={def}>
-      <div className="mx-auto grid h-full max-w-7xl items-center gap-8 px-4 pt-20 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:px-8">
+      <div className="mx-auto grid h-full max-w-7xl items-safe-center gap-8 px-4 pt-20 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:px-8">
         <div>
           <p className="kicker">II · Profile · What</p>
           <h2 id="shot-what-title" tabIndex={-1} className="display mt-3 text-[clamp(2.75rem,8vw,var(--step-6))]">
@@ -51,10 +51,10 @@ export const WhatShot: ShotModule = {
     );
     // Layers assemble alternately from each side, all before the hold at 1.35s (0.45 × 3).
     layers.forEach((layer, i) => {
-      const at = 0.35 + i * 0.18;
+      const at = 0.35 + i * 0.14;
       tl.from(layer, { xPercent: i % 2 ? 110 : -110, rotateX: 50, autoAlpha: 0, duration: 0.3, ease: 'power3.out' }, at).from(
         layer.querySelectorAll('[data-item]'),
-        { yPercent: 100, autoAlpha: 0, stagger: 0.02, duration: 0.15 },
+        { yPercent: 100, autoAlpha: 0, stagger: 0.015, duration: 0.15 },
         at + 0.15,
       );
     });
