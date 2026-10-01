@@ -276,7 +276,7 @@ Time-based, ≈ 8.5s, one GSAP timeline. No sound, ever.
 | t (s) | Beat |
 |---|---|
 | 0.0–0.8 | Ink frame. Livery stripes slash across like a passing matatu (skew + translate) |
-| 0.8–2.0 | Kinetic cut montage, ~0.25s per card on alternating grounds: `PAYMENTS.` `OFFLINE.` `AI.` `LOAD.` `NAIROBI.` |
+| 0.8–2.0 | Kinetic montage on a constant ink ground, ~0.25s per word, each word sliding through rather than cutting: `PAYMENTS.` `OFFLINE.` `AI.` `LOAD.` `NAIROBI.` |
 | 2.0–3.5 | A flow line draws: a payment arrow snaps (signal), reconnects (lime). Teaser of the explainers |
 | 3.5–5.0 | `ISSUE 01` masthead slams in; paper floods outward from centre |
 | 5.0–7.0 | `SYDNEY KAMAU` sets letter by letter; portrait rises under crop marks |
@@ -292,9 +292,9 @@ Time-based, ≈ 8.5s, one GSAP timeline. No sound, ever.
   starts at the Cover rest frame. A **Replay** control sits in the chrome.
 - **Reduced motion / article mode:** reel never plays; the Cover rest frame
   renders immediately.
-- **No flashing hazard:** montage cuts change ground colour at most 4 times per
-  second, and never alternate high-luminance frames faster than 3 per second
-  across more than a quarter of the viewport (WCAG 2.3.1).
+- **No flashing hazard:** the montage ground never changes; words move through
+  rather than cutting on and off, so no large area alternates luminance
+  (WCAG 2.3.1).
 - **LCP:** a timed reveal can push LCP past budget, because the largest element
   appears late. Mitigation: the montage card text at 0.8s is set larger than
   the cover line, so the earliest large paint is the largest; the cover line
