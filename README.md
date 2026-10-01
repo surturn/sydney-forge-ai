@@ -1,120 +1,60 @@
-# Sydney Kamau - Portfolio Website
+# Sydney Kamau — Portfolio
 
-A modern, responsive portfolio website showcasing my work as a Full-Stack Developer & AI Specialist.
+Personal site of Sydney Kamau, a full-stack engineer in Nairobi working on AI systems.
 
-🔗 **Live Site**: *Coming Soon*
+Live: https://sydney-forge-ai.vercel.app
 
-![Portfolio Preview](public/og-image.png)
+The site plays as a short film. A timed intro runs once, then scrolling moves through the story: who I am, what I build, the problems I solve, and how to get in touch. Visitors who prefer reduced motion, or who choose "Read as article", get the same content as a normal page.
 
-## ✨ Features
+## Stack
 
-- **Dark/Light Mode** - Toggle between themes with persistent preference
-- **Responsive Design** - Optimized for all devices (mobile, tablet, desktop)
-- **Animated UI** - Smooth animations powered by Framer Motion
-- **Real Projects** - Showcasing actual work with live demos and GitHub links
-- **Contact Integration** - Email, Phone, WhatsApp, and Calendly scheduling
-- **Certificate Gallery** - Visual display of professional certifications
-- **Resume Download** - One-click CV download
+- React 18, TypeScript, Vite
+- Tailwind CSS
+- GSAP with ScrollTrigger, and Lenis for smooth native scrolling
+- zustand for the small amount of shared state
+- Vitest and Testing Library
 
-## 🛠️ Tech Stack
+## Running it
 
-- **Frontend**: React 18 + TypeScript
-- **Styling**: Tailwind CSS + shadcn/ui components
-- **Build Tool**: Vite
-- **Animations**: Framer Motion
-- **Theming**: next-themes
-- **Icons**: Lucide React
-
-## 📁 Project Structure
-
-```
-sydney-forge-ai/
-├── public/
-│   ├── certificates/       # Certificate images
-│   ├── og-image.png        # Social sharing preview
-│   ├── favicon.svg         # SH branded favicon
-│   └── SydneyKamauResume.docx
-├── src/
-│   ├── components/         # Reusable UI components
-│   │   ├── ui/             # shadcn/ui components
-│   │   ├── Navigation.tsx
-│   │   ├── ThemeProvider.tsx
-│   │   └── ThemeToggle.tsx
-│   ├── pages/              # Route pages
-│   │   ├── Home.tsx
-│   │   ├── About.tsx
-│   │   ├── Skills.tsx
-│   │   ├── Projects.tsx
-│   │   ├── AIAutomation.tsx
-│   │   └── Contact.tsx
-│   └── App.tsx
-└── index.html
-```
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js 18+ 
-- npm or bun
-
-### Installation
+Requires Node.js 18 or later.
 
 ```bash
-# Clone the repository
-git clone https://github.com/surturn/sydney-forge-ai.git
-
-# Navigate to project
-cd sydney-forge-ai
-
-# Install dependencies
 npm install
-
-# Start development server
 npm run dev
 ```
 
-The site will be available at `http://localhost:8080`
-
-### Build for Production
+The dev server runs at http://localhost:8080.
 
 ```bash
-npm run build
-npm run preview
+npm run build     # production build in dist/
+npm run preview   # serve the build locally
+npm test          # run the test suite
 ```
 
-## 📄 Pages
+## Editing content
 
-| Page | Description |
-|------|-------------|
-| **Home** | Hero section with intro, stats, and specializations |
-| **About** | Journey, tech stack, experience, and education |
-| **Skills** | Technical skills with progress bars, tools, and certifications |
-| **Projects** | Featured projects with live demos and GitHub links |
-| **AI & Automation** | AI capabilities and use cases |
-| **Contact** | Contact methods, availability, and social links |
+All copy lives in `src/content/` and can be changed without touching any animation code.
 
-## 🎨 Customization
+- `profile.json` — name, positioning, the profile panels, and the stack
+- `projects/*.md` — one file per project
+- `credentials.json`, `offhours.json`, `contact.json`, `site.json`
 
-### Theme Colors
-Edit `src/index.css` to modify the color scheme. The primary color is teal (`173 80% 40%` in HSL).
+Content is checked when the site builds. A missing field or a reference to a project that does not exist stops the build with the file and field named.
 
-### Content
-All page content is contained within individual page components in `src/pages/`.
+## Project layout
 
-### Certificates
-Add certificate images to `public/certificates/` and update the array in `src/pages/Skills.tsx`.
+```
+src/
+  content/   site copy and the schema that validates it
+  film/      scroll engine, stage, intro, and navigation between shots
+  shots/     one component per part of the story
+  chrome/    the top bar, mode toggle, and skip link
+vite/        build-time content loader
+```
 
-## 📱 Connect
+## Contact
 
-- **GitHub**: [github.com/surturn](https://github.com/surturn)
-- **LinkedIn**: [linkedin.com/in/sydney-kamau-991b362a2](https://www.linkedin.com/in/sydney-kamau-991b362a2)
-- **Instagram**: [@sydneystechhub](https://www.instagram.com/sydneystechhub)
-- **Email**: sydneykamau2005@gmail.com
-
-## 📜 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
----
-
-Built with ❤️ by Sydney Kamau
+- Email: sydneykamau2005@gmail.com
+- GitHub: https://github.com/surturn
+- LinkedIn: https://www.linkedin.com/in/sydney-kamau-991b362a2/
+- Invonics Technologies: https://invonicstechnologies.com
