@@ -1,0 +1,17 @@
+{
+  "heading": "Write to me.",
+  "email": "sydneykamau2005@gmail.com",
+  "cvPath": "/Sydney_Kamau_Resume.docx",
+  "bookingUrl": null,
+  "project": {
+    "subject": "Project enquiry",
+    "body": "What we're building:\nTimeline:\nBudget range:"
+  },
+  "links": [
+    { "label": "Email", "href": "mailto:sydneykamau2005@gmail.com", "kind": "email" },
+    { "label": "GitHub", "href": "https://github.com/surturn", "kind": "github" },
+    { "label": "LinkedIn", "href": "https://www.linkedin.com/in/sydney-kamau-991b362a2/", "kind": "linkedin" },
+    { "label": "Invonics Technologies", "href": "https://invonicstechnologies.com", "kind": "invonics" }
+  ],
+  "colophon": "Set in Bodoni Moda, Inter Tight and IBM Plex Mono. Built in Nairobi."
+}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<rect width="100%" height="100%" fill="#14121F"/>
+<g stroke="#C8F031" stroke-width="3" fill="none" opacity=".5">
+<path d="M40 40h80M40 40v80M1560 40h-80M1560 40v80M40 960h80M40 960v-80M1560 960h-80M1560 960v-80"/>
+</g>
+<text x="50%" y="50%" fill="#C8F031" font-family="IBM Plex Mono, monospace" font-size="50" text-anchor="middle" dominant-baseline="middle" letter-spacing="4">ASSETFLOW — SCREENSHOT COMING</text>
+</svg>

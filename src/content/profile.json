@@ -1,0 +1,55 @@
+{
+  "name": "Sydney Kamau",
+  "role": "Full-Stack Engineer · AI Systems",
+  "location": "Nairobi, Kenya",
+  "coords": "-1.2921°, 36.8219°",
+  "email": "sydneykamau2005@gmail.com",
+  "github": "https://github.com/surturn",
+  "linkedin": "https://www.linkedin.com/in/sydney-kamau-991b362a2/",
+  "company": "Invonics Technologies",
+  "companyUrl": "https://invonicstechnologies.com",
+  "portrait": {
+    "src": "/images/placeholders/portrait.svg",
+    "alt": "Portrait of Sydney Kamau",
+    "width": 1200,
+    "height": 1500,
+    "placeholder": true
+  },
+  "cover": {
+    "kicker": "Full-stack engineer · AI systems",
+    "standfirst": "The technical person you bring in when a project needs a solution nobody has drawn yet.",
+    "chips": ["assetflow", "eventify", "digital-twin"]
+  },
+  "who": {
+    "heading": "Engineer. Founder.",
+    "body": "Full-stack engineer with depth in AI and AI infrastructure, based in Nairobi. The technical person you bring in when a project needs a solution nobody has drawn yet.",
+    "invonics": "Founder of Invonics Technologies — we audit how a business actually works, then refine its systems or build new ones."
+  },
+  "what": {
+    "heading": "Whole systems.",
+    "body": "I design and build whole systems — backend, frontend, mobile, and the AI inside them. Backends that move money and survive load, web apps in React and Angular, Android in Kotlin, and AI systems end to end: training my own models locally, integrating LLMs, and building the fine-tuning and RAG pipelines around them.",
+    "layers": [
+      { "name": "AI", "items": ["PyTorch", "YOLOv8", "LangChain", "ChromaDB", "OpenAI", "Groq", "NumPy"] },
+      { "name": "Android", "items": ["Kotlin"] },
+      { "name": "Web", "items": ["React", "TypeScript", "Angular", "Tailwind CSS", "Vite"] },
+      { "name": "Backend", "items": ["Django", "FastAPI", "Fastify", "Express", "Spring Boot", "Celery", "BullMQ"] },
+      { "name": "Data / infra", "items": ["PostgreSQL", "Redis", "Docker", "Railway", "Vercel", "Sentry", "Cloudflare R2"] }
+    ]
+  },
+  "solves": {
+    "heading": "Software that has to hold up in real conditions.",
+    "items": [
+      { "condition": "Thousands of buyers, one ticket tier, no overselling", "proof": ["eventify"] },
+      { "condition": "Payments that confirm even when the M-Pesa callback never arrives", "proof": ["eventify"] },
+      { "condition": "Classrooms with patchy signal that still work offline", "proof": ["assetflow"] },
+      { "condition": "Many schools on one system, each one's data walled off", "proof": ["assetflow"] },
+      { "condition": "AI that does real work but leaves the final call to a person", "proof": ["invonics-automations", "invonics-crm"] },
+      { "condition": "Answers grounded in your own material, with faithfulness measured", "proof": ["digital-twin"] }
+    ]
+  },
+  "for": {
+    "heading": "Who it's for.",
+    "sectors": ["Schools and institutions", "Event organisers", "Retailers", "Farmers", "Students and educators", "Sales teams and growing businesses"],
+    "tail": "And any team that needs technical depth without a full-time hire."
+  }
+}

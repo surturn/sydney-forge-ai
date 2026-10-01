@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1600" viewBox="0 0 1000 1600">
+<rect width="100%" height="100%" fill="#14121F"/>
+<g stroke="#FF4F1F" stroke-width="3" fill="none" opacity=".5">
+<path d="M40 40h80M40 40v80M960 40h-80M960 40v80M40 1560h80M40 1560v-80M960 1560h-80M960 1560v-80"/>
+</g>
+<text x="50%" y="50%" fill="#FF4F1F" font-family="IBM Plex Mono, monospace" font-size="31" text-anchor="middle" dominant-baseline="middle" letter-spacing="4">FORUS — SCREENS COMING</text>
+</svg>
