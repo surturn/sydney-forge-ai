@@ -18,6 +18,12 @@ flow:
     - { from: Goals, to: You, label: "Order proposed by goal rank" }
     - { from: Goals, to: Partner, label: "Shared by default, or listed only" }
 outcome: A daily habit that keeps actions and spending tied to the goals they serve.
+story:
+  headline: "What we do rarely matches what we say we want."
+  intro: "A life-planning app for one person or a couple, built around one question: does what we actually do, and spend, match what we say we want?"
+  problem: "Goals are easy to set and easy to drift from. Daily tasks and spending rarely get checked against the things they're supposed to serve."
+  built: "An Android app where every task and every shilling links to a goal, from today up to a lifetime. At 8pm you reconcile the day: every open task is done, moved, or dropped with a reason."
+  learned: "A reminder is easy to ignore. The real enforcement is at launch — if yesterday isn't reconciled, that's the only screen you can open."
 ---
 
 Goals span day, week, month, quarter, half-year, year, and lifetime; spending is logged against the same goals.

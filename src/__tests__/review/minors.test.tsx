@@ -71,7 +71,7 @@ describe('Minor 5 — chapter bar fits a 375px phone', () => {
     ]).placed
     useFilmStore.setState({ mode: 'film', activeShot: 'cover', reelState: 'done' })
     render(<ChapterBar />)
-    expect(screen.getByRole('button', { name: 'Profile' }).querySelector('.sm\\:hidden')?.textContent).toBe('II')
+    expect(screen.getByRole('button', { name: 'About' }).querySelector('.sm\\:hidden')?.textContent).toBe('II')
     expect(screen.getByRole('button', { name: /read as article/i }).querySelector('.sm\\:hidden')?.textContent).toBe('Article')
   })
 })

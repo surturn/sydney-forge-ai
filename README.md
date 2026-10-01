@@ -1,10 +1,10 @@
 # Sydney Kamau — Portfolio
 
-Personal site of Sydney Kamau, a full-stack engineer in Nairobi working on AI systems.
+Personal site of Sydney Kamau, a software engineer and founder in Nairobi.
 
 Live: https://sydney-forge-ai.vercel.app
 
-The site plays as a short film. A timed intro runs once, then scrolling moves through the story: who I am, what I build, the problems I solve, and how to get in touch. Visitors who prefer reduced motion, or who choose "Read as article", get the same content as a normal page.
+The site plays as a short film. A timed intro runs once, then scrolling moves through the story: what I do, a little context, the work told as stories (the problem, what I built, what I learned), the questions I'm still working on, and an invitation to get in touch. Visitors who prefer reduced motion, or who choose "Read as article", get the same content as a normal page.
 
 ## Stack
 
@@ -35,8 +35,9 @@ npm test          # run the test suite
 
 All copy lives in `src/content/` and can be changed without touching any animation code.
 
-- `profile.json` — name, positioning, the profile panels, and the stack
-- `projects/*.md` — one file per project
+- `profile.json` — name, portrait, positioning, every section's copy, and the stack
+- `projects/*.md` — one file per project. A featured project with a `story` block (`headline`, `intro`, `problem`, `built`, optional `learned`) gets its own section in the Work chapter; leave `learned` out rather than guess at it
+- To swap the portrait, replace `public/images/sydney-portrait.jpg` and update `portrait.width`/`height` in `profile.json`
 - `credentials.json`, `offhours.json`, `contact.json`, `site.json`
 
 Content is checked when the site builds. A missing field or a reference to a project that does not exist stops the build with the file and field named.

@@ -1,11 +1,17 @@
 {
-  "heading": "Write to me.",
+  "heading": "Tell me what you're trying to build.",
+  "prompts": [
+    "Have a messy problem?",
+    "An idea that isn't fully figured out yet?",
+    "Something you think should exist?"
+  ],
+  "cta": "Let's talk →",
   "email": "sydneykamau2005@gmail.com",
   "cvPath": "/Sydney_Kamau_Resume.docx",
   "bookingUrl": null,
   "project": {
-    "subject": "Project enquiry",
-    "body": "What we're building:\nTimeline:\nBudget range:"
+    "subject": "Something I'm trying to build",
+    "body": "Hi Sydney,\n\nHere's the messy problem:\n\nWhat I've tried so far:\n\nWhen I'd like it sorted:\n"
   },
   "links": [
     { "label": "Email", "href": "mailto:sydneykamau2005@gmail.com", "kind": "email" },
@@ -13,5 +19,5 @@
     { "label": "LinkedIn", "href": "https://www.linkedin.com/in/sydney-kamau-991b362a2/", "kind": "linkedin" },
     { "label": "Invonics Technologies", "href": "https://invonicstechnologies.com", "kind": "invonics" }
   ],
-  "colophon": "Set in Bodoni Moda, Inter Tight and IBM Plex Mono. Built in Nairobi."
+  "colophon": "Built in Nairobi. Debugged everywhere. Set in Bodoni Moda, Inter Tight and IBM Plex Mono."
 }

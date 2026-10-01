@@ -12,10 +12,14 @@ beforeEach(() => {
 
 // The first render pays the cold import of GSAP, Lenis and the content; under a parallel suite that can exceed 5s.
 describe('App', { timeout: 20000 }, () => {
-  it('renders the Stage A shots in film order', () => {
+  it('renders the shots in film order, with a story shot per featured project', () => {
     const { container } = render(<App />)
     const ids = [...container.querySelectorAll('[data-shot]')].map((el) => el.getAttribute('data-shot'))
-    expect(ids).toEqual(['cover', 'who', 'what', 'solves', 'for', 'back-cover'])
+    expect(ids).toEqual([
+      'cover', 'who', 'what', 'context',
+      'project-assetflow', 'project-eventify', 'project-digital-twin', 'project-farmassist', 'project-forus',
+      'solves', 'figuring', 'for', 'back-cover',
+    ])
   })
 
   it('has exactly one h1', () => {
@@ -43,7 +47,11 @@ describe('App', { timeout: 20000 }, () => {
     expect(useFilmStore.getState().mode).toBe('article')
     expect(container.querySelector('[data-reel-overlay]')).toBeNull()
     expect(container.querySelectorAll('[inert]')).toHaveLength(0)
-    for (const name of [/sydney kamau/i, /engineer\. founder\./i, /whole systems/i, /real conditions/i, /who it's for/i, /write to me/i]) {
+    for (const name of [
+      /sydney kamau/i, /what do i actually do/i, /don't just build the screen/i, /a little context/i,
+      /guess where their assets are/i, /real world/i, /figuring out/i, /people i like building with/i,
+      /tell me what you're trying to build/i,
+    ]) {
       expect(screen.getByRole('heading', { name })).toBeInTheDocument()
     }
   })

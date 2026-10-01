@@ -1,6 +1,6 @@
 {
   "name": "Sydney Kamau",
-  "role": "Full-Stack Engineer · AI Systems",
+  "role": "Software engineer · Founder",
   "location": "Nairobi, Kenya",
   "coords": "-1.2921°, 36.8219°",
   "email": "sydneykamau2005@gmail.com",
@@ -9,47 +9,89 @@
   "company": "Invonics Technologies",
   "companyUrl": "https://invonicstechnologies.com",
   "portrait": {
-    "src": "/images/placeholders/portrait.svg",
+    "src": "/images/sydney-portrait.jpg",
     "alt": "Portrait of Sydney Kamau",
-    "width": 1200,
-    "height": 1500,
-    "placeholder": true
+    "width": 1080,
+    "height": 1080
   },
   "cover": {
-    "kicker": "Full-stack engineer · AI systems",
-    "standfirst": "The technical person you bring in when a project needs a solution nobody has drawn yet.",
-    "chips": ["assetflow", "eventify", "digital-twin"]
+    "kicker": "Software engineer · Founder · Nairobi",
+    "headline": "I build things when the obvious solution isn't good enough.",
+    "standfirst": "I'm a software engineer and founder based in Nairobi. I work across web, mobile, AI and backend systems — usually somewhere between “this should be possible” and “okay, let's figure it out.”",
+    "caption": "Fig. 1 — usually somewhere between Nairobi, a laptop and a ridiculous number of browser tabs"
   },
   "who": {
-    "heading": "Engineer. Founder.",
-    "body": "Full-stack engineer with depth in AI and AI infrastructure, based in Nairobi. The technical person you bring in when a project needs a solution nobody has drawn yet.",
-    "invonics": "Founder of Invonics Technologies — we audit how a business actually works, then refine its systems or build new ones."
+    "heading": "So, what do I actually do?",
+    "lead": "I write software, design systems and occasionally convince computers to cooperate.",
+    "intro": "Most of my work starts with a problem that isn't particularly technical.",
+    "examples": [
+      "Someone has a process that's taking too long.",
+      "A business has information scattered everywhere.",
+      "A team needs a tool that doesn't exist yet."
+    ],
+    "close": "I like figuring out what's actually going wrong, then building the simplest system that makes it better.",
+    "building": {
+      "label": "Currently building",
+      "note": "Turning messy business processes into software people can actually use."
+    }
   },
   "what": {
-    "heading": "Whole systems.",
-    "body": "I design and build whole systems — backend, frontend, mobile, and the AI inside them. Backends that move money and survive load, web apps in React and Angular, Android in Kotlin, and AI systems end to end: training my own models locally, integrating LLMs, and building the fine-tuning and RAG pipelines around them.",
+    "heading": "I don't just build the screen.",
+    "body": [
+      "A good product is rarely just a frontend.",
+      "There's the interface someone sees, the backend quietly doing the work, the database holding everything together — and all the weird little decisions in between.",
+      "I like working across those layers, because that's usually where the interesting problems are."
+    ],
     "layers": [
-      { "name": "AI", "items": ["PyTorch", "YOLOv8", "LangChain", "ChromaDB", "OpenAI", "Groq", "NumPy"] },
-      { "name": "Android", "items": ["Kotlin"] },
-      { "name": "Web", "items": ["React", "TypeScript", "Angular", "Tailwind CSS", "Vite"] },
-      { "name": "Backend", "items": ["Django", "FastAPI", "Fastify", "Express", "Spring Boot", "Celery", "BullMQ"] },
-      { "name": "Data / infra", "items": ["PostgreSQL", "Redis", "Docker", "Railway", "Vercel", "Sentry", "Cloudflare R2"] }
+      { "name": "Frontend", "items": ["React", "TypeScript", "Angular", "Tailwind"] },
+      { "name": "Backend", "items": ["Django", "FastAPI", "Spring Boot", "Node"] },
+      { "name": "Data", "items": ["PostgreSQL", "Redis", "Docker"] },
+      { "name": "AI", "items": ["OpenAI", "Groq", "LangChain", "PyTorch"] },
+      { "name": "Mobile", "items": ["Kotlin", "Android"] }
     ]
   },
+  "context": {
+    "heading": "A little context.",
+    "body": [
+      "I didn't get into software because I had a five-year plan to become a full-stack engineer.",
+      "I got interested in building things, then kept finding problems that needed better tools.",
+      "That turned into software engineering, then startups, then AI — and now a slightly unhealthy curiosity about how systems work.",
+      "I'm still figuring things out as I go."
+    ],
+    "coda": "That's kind of the point.",
+    "aside": "Currently building, learning and breaking things — in roughly that order."
+  },
   "solves": {
-    "heading": "Software that has to hold up in real conditions.",
+    "heading": "I like building for the real world.",
+    "standfirst": "Because real users don't behave the way the documentation says they will.",
     "items": [
-      { "condition": "Thousands of buyers, one ticket tier, no overselling", "proof": ["eventify"] },
-      { "condition": "Payments that confirm even when the M-Pesa callback never arrives", "proof": ["eventify"] },
-      { "condition": "Classrooms with patchy signal that still work offline", "proof": ["assetflow"] },
-      { "condition": "Many schools on one system, each one's data walled off", "proof": ["assetflow"] },
-      { "condition": "AI that does real work but leaves the final call to a person", "proof": ["invonics-automations", "invonics-crm"] },
-      { "condition": "Answers grounded in your own material, with faithfulness measured", "proof": ["digital-twin"] }
+      { "label": "Event tickets", "scenario": "Thousands of people trying to buy at once. One inventory. No accidental overselling.", "proof": ["eventify"] },
+      { "label": "Mobile money", "scenario": "Someone paid, but the M-Pesa callback never arrived. They still get their ticket.", "proof": ["eventify"] },
+      { "label": "School systems", "scenario": "The internet isn't always reliable. The software still has to work.", "proof": ["assetflow"] },
+      { "label": "Many schools, one system", "scenario": "Everyone shares the platform. No school ever sees another school's data.", "proof": ["assetflow"] },
+      { "label": "AI at work", "scenario": "The AI does the busywork. A person still makes the call.", "proof": ["invonics-automations", "invonics-crm"] },
+      { "label": "Studying", "scenario": "Answers come from your own lecture notes — and get checked against them.", "proof": ["digital-twin"] }
+    ]
+  },
+  "figuring": {
+    "heading": "Things I'm figuring out.",
+    "intro": "Not a list of answers. Just the questions I keep coming back to.",
+    "questions": [
+      "How do you make AI useful without making people learn AI?",
+      "How do you build software that survives unreliable internet?",
+      "How do you keep a multi-tenant system genuinely isolated?",
+      "When should a business automate something, and when should it just fix the process?"
     ]
   },
   "for": {
-    "heading": "Who it's for.",
-    "sectors": ["Schools and institutions", "Event organisers", "Retailers", "Farmers", "Students and educators", "Sales teams and growing businesses"],
-    "tail": "And any team that needs technical depth without a full-time hire."
+    "heading": "People I like building with.",
+    "people": [
+      { "text": "People running businesses with messy processes" },
+      { "text": "Founders with an idea they can't quite explain yet" },
+      { "text": "Teams that have outgrown spreadsheets" },
+      { "text": "People who know what they need, but not how to build it" },
+      { "text": "Anyone who says:", "quote": "There has to be a better way to do this." }
+    ],
+    "tail": "If you're nodding along, we should probably talk."
   }
 }

@@ -20,6 +20,12 @@ flow:
     - { from: API, to: API, label: "Row-level security per school" }
     - { from: API, to: PWA, label: "Damages roll into invoices" }
 outcome: Schools keep working through dead zones, and no school can ever see another's data.
+story:
+  headline: "Schools shouldn't have to guess where their assets are."
+  intro: "The interesting part wasn't building another dashboard. It was making accountability simple enough that people would actually use it."
+  problem: "Books, desks and lab equipment were tracked across spreadsheets and disconnected records. And the classroom doesn't always have signal."
+  built: "A system for tracking assets, who has them, and what happens when they come back damaged — QR codes, borrow and return, invoices, and an assistant you can ask. It keeps working offline and syncs when the signal returns."
+  learned: "The hard part of software isn't always the code. Sometimes it's understanding how people actually work."
 ---
 
 Every tenant-scoped table is isolated by PostgreSQL row-level security, not just application filters.

@@ -19,6 +19,12 @@ flow:
     - { from: Twin, to: LLM, label: "Prompt within a token budget" }
     - { from: LLM, to: Student, label: "Grounded answer, faithfulness checked", kind: recover }
 outcome: Long sessions that keep their thread, and answers measured against a hand-written question set.
+story:
+  headline: "A study partner that remembers you."
+  intro: "Most AI tutors are stateless. Every conversation starts from zero."
+  problem: "They don't know which unit you're on, what you understood last week, or that analogies work better for you than formal definitions."
+  built: "An AI study partner that teaches inside your actual course — your slides, your notes, cited — and holds a two-hour session without losing the thread. A map of what you know is still in progress."
+  learned: "Memory should be legible: something you can open, inspect and correct. And “grounded” should be something you measure, not a slogan."
 ---
 
 The context window is managed to a measured token budget: recent turns stay verbatim, older ones fold into a running summary.
