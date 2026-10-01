@@ -6,10 +6,15 @@ const pkg = JSON.parse(readFileSync(join(process.cwd(), 'package.json'), 'utf-8'
 const deps = { ...pkg.dependencies, ...pkg.devDependencies }
 
 describe('dependencies', () => {
-  it('has the scroll engine installed', () => {
-    expect(deps).toHaveProperty('lenis')
-    expect(deps).toHaveProperty('zustand')
-    expect(deps).toHaveProperty('framer-motion')
+  it('has the film engine installed', () => {
+    for (const name of ['gsap', 'lenis', 'zustand', 'zod']) {
+      expect(deps, `${name} should be installed`).toHaveProperty(name)
+    }
+  })
+
+  it('has the build-time content tooling as dev dependencies', () => {
+    expect(pkg.devDependencies).toHaveProperty('yaml')
+    expect(pkg.devDependencies).toHaveProperty('marked')
   })
 
   it('no longer ships the retired router and page libraries', () => {
@@ -23,8 +28,9 @@ describe('dependencies', () => {
     }
   })
 
-  it('has not installed the 3D stack yet — that is Stage 3', () => {
-    expect(deps).not.toHaveProperty('three')
-    expect(deps).not.toHaveProperty('@react-three/fiber')
+  it('never installs a 3D stack', () => {
+    for (const name of ['three', '@react-three/fiber', '@react-three/drei']) {
+      expect(deps).not.toHaveProperty(name)
+    }
   })
 })
