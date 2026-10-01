@@ -33,7 +33,7 @@ function Component() {
                 data-layer={layer.name}
                 className={`flex flex-wrap items-baseline gap-x-3 border-2 border-ink px-3 py-2 ${FILL[i % FILL.length]}`}
               >
-                <p className="w-20 shrink-0 font-mono text-xs uppercase tracking-[0.12em] opacity-90">{layer.name}</p>
+                <p className="w-20 shrink-0 font-mono text-xs font-medium uppercase tracking-[0.12em] opacity-90">{layer.name}</p>
                 <ul className="flex flex-wrap gap-x-1.5 gap-y-0.5">
                   {layer.items.map((item, j) => (
                     <li key={item} data-item className="font-mono text-sm">

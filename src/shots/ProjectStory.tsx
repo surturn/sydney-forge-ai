@@ -45,7 +45,7 @@ export function makeProjectShot(project: Project & { story: Story }, n: number, 
                 data-beat
                 className={`px-4 py-4 ${b.tone} ${i ? 'border-t-2 border-ink md:border-l-2 md:border-t-0' : ''}`}
               >
-                <p className={`font-mono text-xs uppercase tracking-[0.12em] ${b.tone.includes('cobalt') ? 'text-paper' : 'text-cobalt'}`}>
+                <p className={`font-mono text-xs font-medium uppercase tracking-[0.12em] ${b.tone.includes('cobalt') ? 'text-paper' : 'text-cobalt'}`}>
                   {b.label}
                 </p>
                 <p className="mt-2 leading-relaxed">{b.body}</p>

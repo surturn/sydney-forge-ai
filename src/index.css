@@ -13,7 +13,7 @@
     --paper: 35 100% 94%;
     --paper-raised: 0 0% 100%;
     --ink: 249 27% 10%;
-    --ink-muted: 253 14% 38%;
+    --ink-muted: 253 18% 27%;
     --cobalt: 232 100% 57%;
     --signal: 13 100% 56%;
     --lime: 73 86% 57%;
@@ -22,14 +22,14 @@
     --foreground: 249 27% 10%;
     --primary: 13 100% 56%;
     --primary-foreground: 249 27% 10%;
-    --muted-foreground: 253 14% 38%;
+    --muted-foreground: 253 18% 27%;
     --border: 249 27% 10% / 0.18;
     --ring: 232 100% 57%;
     --radius: 0rem;
 
     --ease-film: cubic-bezier(0.16, 1, 0.3, 1);
 
-    --step--1: 0.75rem;
+    --step--1: 0.8125rem;
     --step-0: 1rem;
     --step-1: 1.333rem;
     --step-2: 1.777rem;
@@ -62,9 +62,11 @@
   }
 
   body {
-    @apply font-sans antialiased;
+    /* No grayscale antialiasing: on macOS it thins already-light text on paper. */
+    @apply font-sans;
     background: hsl(var(--paper));
     color: hsl(var(--ink));
+    font-weight: 450;
     line-height: 1.6;
   }
 
@@ -93,8 +95,12 @@
 @layer components {
   .display {
     @apply font-display;
-    font-weight: 700;
-    font-variation-settings: 'opsz' 96;
+    /*
+      Bodoni's large optical sizes thin the hairlines until strokes vanish on
+      paper. A low optical size keeps the Didone contrast with visible strokes.
+    */
+    font-weight: 800;
+    font-variation-settings: 'opsz' 6;
     letter-spacing: -0.02em;
     line-height: 0.9;
   }
@@ -102,13 +108,15 @@
   .standfirst {
     @apply font-display;
     font-style: italic;
-    font-weight: 500;
+    font-weight: 600;
+    font-variation-settings: 'opsz' 6;
     line-height: 1.35;
   }
 
   .kicker {
     @apply font-mono uppercase;
     font-size: var(--step--1);
+    font-weight: 500;
     letter-spacing: 0.12em;
     color: hsl(var(--cobalt));
   }
@@ -116,6 +124,7 @@
   .meta {
     @apply font-mono uppercase;
     font-size: var(--step--1);
+    font-weight: 500;
     letter-spacing: 0.12em;
     color: hsl(var(--ink-muted));
   }
@@ -125,6 +134,7 @@
     min-height: 1.75rem;
     padding: 0.25rem 0.6rem;
     font-size: var(--step--1);
+    font-weight: 500;
     letter-spacing: 0.08em;
     background: hsl(var(--lime));
     color: hsl(var(--ink));

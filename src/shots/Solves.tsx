@@ -26,7 +26,7 @@ function Component() {
               <div className="relative flex items-start gap-3">
                 <span className="meta pt-1 text-ink">{String(i + 1).padStart(2, '0')}</span>
                 <div>
-                  <p className="font-mono text-xs uppercase tracking-[0.12em] text-cobalt">{item.label}</p>
+                  <p className="font-mono text-xs font-medium uppercase tracking-[0.12em] text-cobalt">{item.label}</p>
                   <p className="mt-1 font-medium leading-snug">{item.scenario}</p>
                   <div className="mt-2">
                     <ProofChips ids={item.proof} />

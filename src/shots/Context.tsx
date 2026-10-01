@@ -15,7 +15,7 @@ function Component() {
           <h2 id="shot-context-title" tabIndex={-1} className="display mt-3 text-[clamp(2.75rem,8vw,var(--step-6))]">
             {context.heading}
           </h2>
-          <p data-aside className="mt-8 inline-block max-w-xs rotate-[1.5deg] bg-lime px-3 py-2 font-mono text-xs uppercase leading-relaxed tracking-[0.08em] text-ink">
+          <p data-aside className="mt-8 inline-block max-w-xs rotate-[1.5deg] bg-lime px-3 py-2 font-mono text-xs font-medium uppercase leading-relaxed tracking-[0.08em] text-ink">
             {context.aside}
           </p>
         </div>
