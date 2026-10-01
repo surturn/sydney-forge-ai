@@ -1,13 +1,14 @@
 import { useCallback, useEffect, useLayoutEffect, useRef } from 'react';
 import type gsap from 'gsap';
-import { readStored, REEL_KEY, useFilmStore, writeStored, type Mode, type ReelState } from './store';
+import { useFilmStore, type Mode, type ReelState } from './store';
 import { buildReel } from './reelTimeline';
 import { ReelControls } from '@/chrome/ReelControls';
 
 const WORDS = ['PAYMENTS.', 'OFFLINE.', 'AI.', 'LOAD.', 'NAIROBI.'];
 
+/** The reel is the hook: it plays on every load in film mode, reloads included. */
 export function shouldPlayReel(mode: Mode): boolean {
-  return mode === 'film' && readStored(REEL_KEY, true) !== '1';
+  return mode === 'film';
 }
 
 /** Whether the reel occupies the screen. 'pending' counts only if it is going to play. */
@@ -18,7 +19,7 @@ export function reelIsActive(mode: Mode, reelState: ReelState): boolean {
 }
 
 /**
- * The timed cold open. Plays once per session in film mode; Skip, any wheel,
+ * The timed cold open. Plays on every load in film mode; Skip, any wheel,
  * touch-move or key press (other than Tab/Shift) ends it at its rest frame.
  */
 export function Reel() {
@@ -40,7 +41,6 @@ export function Reel() {
     // progress(1) before kill() lands every `from` tween on the cover at rest.
     tlRef.current?.progress(1).kill();
     tlRef.current = null;
-    writeStored(REEL_KEY, '1', true);
     useFilmStore.getState().setReelState('done');
   }, []);
 
