@@ -55,4 +55,16 @@ describe('Matatu pop design tokens', () => {
     expect(html).toMatch(/rel\s*=\s*["']preconnect["']/)
     expect(html).toContain('crossorigin')
   })
+
+  it('loads the font stylesheet without blocking first paint', () => {
+    const withoutNoscript = html.replace(/<noscript>[\s\S]*?<\/noscript>/g, '')
+    const fontLinks = withoutNoscript.match(/<link[^>]*fonts\.googleapis\.com\/css2[^>]*>/g) ?? []
+    expect(fontLinks.length).toBeGreaterThan(0)
+    for (const link of fontLinks) {
+      expect(link).toMatch(/rel="preload"/)
+      expect(link).toMatch(/as="style"/)
+    }
+    // No-JS visitors still get the fonts.
+    expect(html).toMatch(/<noscript>\s*<link[^>]*rel="stylesheet"[^>]*fonts\.googleapis\.com/)
+  })
 })
