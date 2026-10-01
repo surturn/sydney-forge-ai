@@ -14,15 +14,15 @@ function Component() {
         <div>
           <p className="kicker">II · Profile · Who</p>
           <h2 id="shot-who-title" tabIndex={-1} className="display mt-3 text-[clamp(3rem,10vw,var(--step-7))]">
-            {profile.who.heading.split(' ').map((w, i) => (
-              // The text-node space keeps the accessible name "Engineer. Founder."
-              <span key={i}>
-                {i > 0 ? ' ' : null}
-                <span data-scatter className="inline-block">
+            {/* Readable name for AT; the animated words are decorative copies. */}
+            <span className="sr-only">{profile.who.heading}</span>
+            <span aria-hidden="true">
+              {profile.who.heading.split(' ').map((w, i) => (
+                <span key={i} data-scatter className="inline-block pr-[0.2em]">
                   {w}
                 </span>
-              </span>
-            ))}
+              ))}
+            </span>
           </h2>
         </div>
         <div data-who-copy className="border-l-2 border-ink pl-6">
