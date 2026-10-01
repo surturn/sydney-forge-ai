@@ -41,7 +41,15 @@ export const SceneFrame = ({
       id={id}
       aria-label={label}
       data-scene={index}
-      className={`relative isolate overflow-hidden bg-background ${className}`}
+      /*
+       * No overflow-hidden here: it's an ancestor of Scene 1's sticky pan
+       * track, and any ancestor overflow other than `visible` breaks
+       * position:sticky in its descendants (the pinned box stops sticking
+       * and just scrolls past with the rest of the page). All decorations
+       * below use `inset-0` / `inset-x-0`, so they're already bounded to
+       * this section's own box and never need clipping to stay contained.
+       */
+      className={`relative isolate bg-background ${className}`}
     >
       <div
         data-decoration="dusk"
