@@ -43,7 +43,7 @@ export function buildReel(overlay: HTMLElement, cover: HTMLElement | null): gsap
     .from(c('[data-reel="letter"]'), { yPercent: 100, autoAlpha: 0, duration: 0.5, stagger: 0.12 }, 5.0)
     .from(c('[data-reel="portrait"]'), { clipPath: 'inset(100% 0 0 0)', duration: 1.0, ease: 'power2.out' }, 5.6)
     .from(c('[data-reel="standfirst"]'), { yPercent: 40, autoAlpha: 0, duration: 0.6 }, 7.0)
-    .from(c('[data-reel="chip"]'), { scale: 0, rotate: -12, duration: 0.4, stagger: 0.12, ease: 'back.out(3)' }, 7.4)
+    .from(c('[data-backdrop]'), { autoAlpha: 0, duration: 0.5 }, 6.4)
     .from(c('[data-reel="cta"]'), { yPercent: 60, autoAlpha: 0, duration: 0.4, stagger: 0.1 }, 7.9);
 
   return tl;

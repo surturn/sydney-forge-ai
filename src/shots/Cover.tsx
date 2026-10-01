@@ -1,4 +1,4 @@
-import { content, projectById } from '@/content';
+import { content, featuredProjects } from '@/content';
 import { Shot } from '@/film/Shot';
 import { seekToShot } from '@/film/seek';
 import type { ShotModule } from '@/film/useFilm';
@@ -7,6 +7,7 @@ import { Figure } from './Figure';
 
 const def: ShotDef = { id: 'cover', chapter: 'cover', length: 1.5, hold: [0, 0.55] };
 const { profile, site, contact } = content;
+const firstStory = featuredProjects.find((p) => p.story)?.id;
 
 function Component() {
   const [first, last] = profile.name.toUpperCase().split(' ');
@@ -37,25 +38,13 @@ function Component() {
                 ))}
               </span>
             </h1>
-            <p data-reel="standfirst" className="standfirst mt-5 max-w-xl text-[length:var(--step-1)] text-ink">
+            <p data-reel="standfirst" className="standfirst mt-5 max-w-xl text-[length:var(--step-2)] text-ink">
+              {profile.cover.headline}
+            </p>
+            <p data-reel="standfirst" className="mt-4 max-w-xl text-[length:var(--step-0)] leading-relaxed text-ink-muted">
               {profile.cover.standfirst}
             </p>
-            <ul className="mt-5 flex flex-wrap gap-2" aria-label="Featured work">
-              {profile.cover.chips.map((id) => (
-                <li key={id} data-reel="chip">
-                  <a
-                    href={`#shot-project-${id}`}
-                    className="chip"
-                    onClick={(e) => {
-                      if (seekToShot(`project-${id}`, 'solves')) e.preventDefault();
-                    }}
-                  >
-                    {projectById(id)?.name} ↓
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap items-center gap-3">
               <a
                 data-reel="cta"
                 href="#shot-back-cover"
@@ -64,18 +53,35 @@ function Component() {
                   if (seekToShot('back-cover')) e.preventDefault();
                 }}
               >
-                Work with me
+                Have a project?
               </a>
-              <a data-reel="cta" href={contact.cvPath} target="_blank" rel="noopener" className="btn-outline">
-                Hiring? CV
+              <a
+                data-reel="cta"
+                href={`#shot-project-${firstStory}`}
+                className="btn-outline"
+                onClick={(e) => {
+                  if (seekToShot(`project-${firstStory}`, 'what')) e.preventDefault();
+                }}
+              >
+                See what I've built
+              </a>
+              <a
+                data-reel="cta"
+                href={contact.cvPath}
+                target="_blank"
+                rel="noopener"
+                className="meta inline-flex min-h-[44px] items-center px-1 text-ink underline decoration-1 underline-offset-4 hover:text-cobalt"
+              >
+                Hiring? Here's my CV ↗
               </a>
             </div>
           </div>
           <Figure
             media={profile.portrait}
-            caption="Fig. 1 — the engineer, Nairobi"
+            caption={profile.cover.caption}
             priority
-            className="mx-auto w-[min(48vw,24svh)] md:w-full"
+            backdrop
+            className="mx-auto w-[min(56vw,28svh)] md:w-full"
           />
         </div>
       </div>
@@ -91,7 +97,7 @@ export const CoverShot: ShotModule = {
     tl.to(q('[data-reel="masthead"]'), { yPercent: -60, autoAlpha: 0, duration: 0.3 }, 0.9)
       .to(q('figure'), { scale: 1.25, yPercent: -8, duration: 0.6, ease: 'power2.in' }, 0.85)
       .to(
-        q('h1, [data-reel="standfirst"], ul, [data-reel="cta"]'),
+        q('h1, [data-reel="standfirst"], [data-reel="cta"]'),
         { yPercent: -30, autoAlpha: 0, stagger: 0.04, duration: 0.35 },
         0.95,
       );

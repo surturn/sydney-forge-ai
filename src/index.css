@@ -136,6 +136,11 @@
     padding: 0.6rem 1.25rem;
     background: hsl(var(--signal));
     color: hsl(var(--ink));
+    transition: transform 0.2s var(--ease-film), box-shadow 0.2s var(--ease-film);
+  }
+  .btn-signal:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 3px 3px 0 hsl(var(--ink));
   }
 
   .btn-outline {
@@ -144,6 +149,11 @@
     padding: 0.55rem 1.2rem;
     border: 1.5px solid hsl(var(--cobalt));
     color: hsl(var(--cobalt));
+    transition: background-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover {
+    background: hsl(var(--cobalt));
+    color: hsl(var(--paper));
   }
 
   .rule {

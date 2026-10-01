@@ -10,30 +10,42 @@ const FILL = ['bg-cobalt text-paper', 'bg-lime text-ink', 'bg-paper-raised text-
 function Component() {
   return (
     <Shot def={def}>
-      <div className="mx-auto grid h-full max-w-7xl items-safe-center gap-8 px-4 pt-20 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:px-8">
+      <div className="mx-auto grid h-full max-w-7xl items-safe-center gap-10 px-4 pt-20 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] md:px-8">
         <div>
-          <p className="kicker">II · Profile · What</p>
-          <h2 id="shot-what-title" tabIndex={-1} className="display mt-3 text-[clamp(2.75rem,8vw,var(--step-6))]">
+          <p className="kicker">II · About · How I work</p>
+          <h2 id="shot-what-title" tabIndex={-1} className="display mt-3 text-[clamp(2.5rem,7vw,var(--step-6))]">
             {what.heading}
           </h2>
-          <p data-copy className="mt-5 max-w-lg text-[length:var(--step-0)] leading-relaxed text-ink-muted">
-            {what.body}
-          </p>
+          <div data-copy className="mt-6 max-w-xl space-y-3 text-[length:var(--step-0)] leading-relaxed">
+            {what.body.map((para, i) => (
+              <p key={i} className={i === 0 ? 'standfirst text-[length:var(--step-1)]' : 'text-ink-muted'}>
+                {para}
+              </p>
+            ))}
+          </div>
         </div>
-        <ul data-stack aria-label="Stack, by layer" className="flex flex-col gap-2 [perspective:900px]">
-          {what.layers.map((layer, i) => (
-            <li key={layer.name} data-layer={layer.name} className={`border-2 border-ink px-4 py-3 ${FILL[i % FILL.length]}`}>
-              <p className="font-mono text-xs uppercase tracking-[0.12em] opacity-90">{layer.name}</p>
-              <ul className="mt-1.5 flex flex-wrap gap-x-3 gap-y-1">
-                {layer.items.map((item) => (
-                  <li key={item} data-item className="font-mono text-sm">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
+        <div>
+          <p className="meta">The usual toolbox</p>
+          <ul data-stack aria-label="Stack, by layer" className="mt-2 flex flex-col gap-1.5 [perspective:900px]">
+            {what.layers.map((layer, i) => (
+              <li
+                key={layer.name}
+                data-layer={layer.name}
+                className={`flex flex-wrap items-baseline gap-x-3 border-2 border-ink px-3 py-2 ${FILL[i % FILL.length]}`}
+              >
+                <p className="w-20 shrink-0 font-mono text-xs uppercase tracking-[0.12em] opacity-90">{layer.name}</p>
+                <ul className="flex flex-wrap gap-x-1.5 gap-y-0.5">
+                  {layer.items.map((item, j) => (
+                    <li key={item} data-item className="font-mono text-sm">
+                      {item}
+                      {j < layer.items.length - 1 && <span aria-hidden="true"> ·</span>}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </Shot>
   );
