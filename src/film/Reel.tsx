@@ -4,7 +4,8 @@ import { readStored, REEL_KEY, useFilmStore, writeStored, type Mode, type ReelSt
 import { buildReel } from './reelTimeline';
 import { ReelControls } from '@/chrome/ReelControls';
 
-const WORDS = ['PAYMENTS.', 'OFFLINE.', 'AI.', 'LOAD.', 'NAIROBI.'];
+/** Who, before what: the person the cover then names. */
+const WORDS = ['ENGINEER.', 'FOUNDER.', 'TINKERER.', 'CURIOUS.', 'NAIROBI.'];
 
 export function shouldPlayReel(mode: Mode): boolean {
   return mode === 'film' && readStored(REEL_KEY, true) !== '1';
