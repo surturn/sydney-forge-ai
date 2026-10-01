@@ -28,6 +28,10 @@ describe('dependencies', () => {
     }
   })
 
+  it('has retired Framer Motion in favour of GSAP', () => {
+    expect(deps).not.toHaveProperty('framer-motion')
+  })
+
   it('never installs a 3D stack', () => {
     for (const name of ['three', '@react-three/fiber', '@react-three/drei']) {
       expect(deps).not.toHaveProperty(name)

@@ -1,7 +1,7 @@
 import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
 import { parse as parseYaml } from 'yaml';
-import type { ZodType } from 'zod';
+import type { z, ZodTypeAny } from 'zod';
 import {
   ContactSchema,
   CredentialSchema,
@@ -19,7 +19,7 @@ export class ContentError extends Error {}
 // Normalise Windows line endings first: this repo checks out with CRLF.
 const read = (p: string) => readFileSync(p, 'utf-8').replace(/\r\n?/g, '\n');
 
-function validate<T>(file: string, schema: ZodType<T, any, any>, data: unknown): T {
+function validate<S extends ZodTypeAny>(file: string, schema: S, data: unknown): z.infer<S> {
   const r = schema.safeParse(data);
   if (!r.success) {
     const issues = r.error.issues.map((i) => `  ${i.path.join('.') || '(root)'}: ${i.message}`).join('\n');
@@ -28,7 +28,7 @@ function validate<T>(file: string, schema: ZodType<T, any, any>, data: unknown):
   return r.data;
 }
 
-function json<T>(dir: string, name: string, schema: ZodType<T, any, any>, files: string[]): T {
+function json<S extends ZodTypeAny>(dir: string, name: string, schema: S, files: string[]): z.infer<S> {
   const p = join(dir, name);
   files.push(p);
   let data: unknown;

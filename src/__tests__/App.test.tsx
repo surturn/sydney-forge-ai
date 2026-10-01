@@ -1,26 +1,41 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, beforeEach } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import App from '@/App'
-import { SCENES } from '@/content/content'
+import { setMatchMedia } from './setup'
+import { useFilmStore } from '@/film/store'
+
+beforeEach(() => {
+  localStorage.clear()
+  sessionStorage.clear()
+  useFilmStore.setState({ activeShot: 'cover', mode: 'film', modeReason: 'default', reelState: 'pending' })
+})
 
 describe('App', () => {
-  it('renders all six scenes in order as labelled landmarks', () => {
+  it('renders the Stage A shots in film order', () => {
     const { container } = render(<App />)
-    const sections = Array.from(container.querySelectorAll('[data-scene]'))
-    expect(sections).toHaveLength(6)
-    sections.forEach((section, i) => {
-      expect(section).toHaveAttribute('data-scene', String(i))
-      expect(section).toHaveAttribute('id', SCENES[i].id)
-    })
+    const ids = [...container.querySelectorAll('[data-shot]')].map((el) => el.getAttribute('data-shot'))
+    expect(ids).toEqual(['cover', 'who', 'what', 'solves', 'for', 'back-cover'])
   })
 
-  it('renders the scene navigation', () => {
-    render(<App />)
-    expect(screen.getByRole('navigation', { name: /scenes/i })).toBeInTheDocument()
-  })
-
-  it('renders the cold open heading as the single h1', () => {
+  it('has exactly one h1', () => {
     render(<App />)
     expect(screen.getAllByRole('heading', { level: 1 })).toHaveLength(1)
+  })
+
+  it('renders chapters, skip link and mode toggle', () => {
+    render(<App />)
+    expect(screen.getByRole('navigation', { name: 'Chapters' })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /skip to contact/i })).toBeInTheDocument()
+  })
+
+  it('in reduced motion, renders the article: no reel, nothing inert, every shot heading reachable', () => {
+    setMatchMedia({ '(prefers-reduced-motion: reduce)': true })
+    const { container } = render(<App />)
+    expect(useFilmStore.getState().mode).toBe('article')
+    expect(container.querySelector('[data-reel-overlay]')).toBeNull()
+    expect(container.querySelectorAll('[inert]')).toHaveLength(0)
+    for (const name of [/sydney kamau/i, /engineer\. founder\./i, /whole systems/i, /real conditions/i, /who it's for/i, /write to me/i]) {
+      expect(screen.getByRole('heading', { name })).toBeInTheDocument()
+    }
   })
 })
