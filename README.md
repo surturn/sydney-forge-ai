@@ -2,7 +2,7 @@
 
 Personal site of Sydney Kamau, a software engineer and founder in Nairobi.
 
-Live: https://sydney-forge-ai.vercel.app
+Live: https://sydneykamau.vercel.app
 
 The site plays as a short film. A timed intro runs once, then scrolling moves through the story: what I do, a little context, the work told as stories (the problem, what I built, what I learned), the questions I'm still working on, and an invitation to get in touch. Visitors who prefer reduced motion, or who choose "Read as article", get the same content as a normal page.
 
