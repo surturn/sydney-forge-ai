@@ -25,7 +25,7 @@ export const ProjectFrontSchema = z
   .object({
     id: z.string().regex(/^[a-z0-9-]+$/, 'id must be kebab-case'),
     name: z.string().min(1),
-    status: z.enum(['Live', 'Beta', 'In progress', 'Live (internal)']),
+    status: z.enum(['Live', 'Beta', 'In progress', 'Live (internal)', 'Concept']),
     tier: z.enum(['featured', 'index']),
     order: z.number().int(),
     repo: z.object({ url: z.string().url().nullable(), private: z.boolean() }),

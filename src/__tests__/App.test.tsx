@@ -18,7 +18,7 @@ describe('App', { timeout: 20000 }, () => {
     expect(ids).toEqual([
       'cover', 'who', 'what', 'context',
       'project-assetflow', 'project-eventify', 'project-digital-twin', 'project-farmassist', 'project-forus',
-      'solves', 'figuring', 'for', 'back-cover',
+      'showcase', 'solves', 'figuring', 'for', 'back-cover',
     ])
   })
 
