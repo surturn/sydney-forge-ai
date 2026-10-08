@@ -15,14 +15,14 @@ const stories = featuredProjects.flatMap((p) => (p.story ? [{ ...p, story: p.sto
 const ProjectShots = stories.map((p, i) => makeProjectShot(p, i + 1, stories.length));
 const hasConcepts = content.projects.some((p) => p.status === 'Concept' && p.liveUrl && p.figure);
 
-/** Film order: who I am, the work as stories, the concept showcase, how I think, then the invitation. */
+/** Film order: who I am, the work (concept showcase first, then the stories), how I think, then the invitation. */
 export const SHOTS: ShotModule[] = [
   CoverShot,
   WhoShot,
   WhatShot,
   ContextShot,
-  ...ProjectShots,
   ...(hasConcepts ? [ShowcaseShot] : []),
+  ...ProjectShots,
   SolvesShot,
   FiguringShot,
   ForShot,

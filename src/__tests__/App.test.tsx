@@ -17,8 +17,9 @@ describe('App', { timeout: 20000 }, () => {
     const ids = [...container.querySelectorAll('[data-shot]')].map((el) => el.getAttribute('data-shot'))
     expect(ids).toEqual([
       'cover', 'who', 'what', 'context',
+      'showcase',
       'project-assetflow', 'project-eventify', 'project-digital-twin', 'project-farmassist', 'project-forus',
-      'showcase', 'solves', 'figuring', 'for', 'back-cover',
+      'solves', 'figuring', 'for', 'back-cover',
     ])
   })
 

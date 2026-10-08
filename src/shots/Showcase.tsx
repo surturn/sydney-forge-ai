@@ -6,7 +6,7 @@ import type { ShotDef } from '@/film/registry';
 const def: ShotDef = { id: 'showcase', chapter: 'work', length: 1.5, hold: [0.35, 0.85] };
 const conceptProjects = content.projects.filter((p) => p.status === 'Concept' && p.liveUrl && p.figure);
 
-/** Concept sites: the stories above prove the engineering, these prove the visual and UX side. */
+/** Concept sites open the Work chapter: these prove the visual and UX side, the stories after them prove the engineering. */
 function Component() {
   return (
     <Shot def={def}>
@@ -16,7 +16,7 @@ function Component() {
           Two concept sites, built for range.
         </h2>
         <p data-intro className="standfirst mt-4 max-w-3xl text-[length:var(--step-1)]">
-          The stories above show how I engineer. These show the visual and UX side: invented brands, each with its own type, palette and one signature moment.
+          The visual and UX side first: invented brands, each with its own type, palette and one signature moment. The stories that follow show how I engineer.
         </p>
         <ul className="mt-6 grid gap-6 md:grid-cols-2">
           {conceptProjects.map((p) => (
