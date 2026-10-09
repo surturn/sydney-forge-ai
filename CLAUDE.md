@@ -23,12 +23,12 @@ Vercel, auto-deploy on push to `main`. Use `sydneykamau.vercel.app`, not per-dep
 `graphify-out/` has a code graph (local, not committed). Ask `graphify query "..."` before reading many files.
 
 ## Session state (update at the end of each session)
-- 2026-10-09: branch `feat/explainer-film` had `main` merged in (22a54c5), 187 tests pass. Not pushed.
-- Reel keeps this branch's slowed timeline and chips. Portrait and caption come from `main`.
-- A `git stash` holds older uncommitted test edits, superseded by `main`'s tests. Drop with `git stash drop` once checked.
-- Untracked: `public/Profile Photo*.png`, `reports/stage-a.json`.
+- 2026-10-09: PR 2 (`feat/explainer-film`) merged to `main` and verified on production at desktop and mobile. Branch and old stash deleted.
+- Reel keeps the slowed timeline and chips. Portrait and caption come from `main`.
 - `npm test` no longer runs the network `npm audit` test; use `npm run test:deps`. Default run: 24 files, 183 tests pass.
-- Next: open a PR from `feat/explainer-film` to `main`.
+- Untracked: `public/Profile Photo*.png`, `reports/stage-a.json`, `.claude/launch.json`.
+- Fixed in `fix/link-preview-and-intro-words`: absolute `og:image`, `og:url` and canonical tags, a real 1200x630 PNG card (source: `scripts/og.html`, screenshot at 1200x630 into `public/og-image.png`), and the intro word montage (zero `y` in `reelTimeline.ts` so CSS parking does not add a pixel offset to `yPercent`).
+- The intro fix was verified by seeking the GSAP timeline, not by watching: headless runs at about 2 fps and GSAP lag smoothing slows the timeline. Still worth one look on a real phone.
 
 ## Verify (see global rule: drive it like a user, mobile 390x844 and desktop 1440x900, screenshots, fix until it works)
 - `npm run dev`. Play the intro, scroll every chapter, use the chapter bar, open the Showcase cards and project stories, toggle article mode. Check reduced-motion too.

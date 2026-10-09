@@ -25,10 +25,13 @@ export function buildReel(overlay: HTMLElement, cover: HTMLElement | null): gsap
     0,
   );
 
-  // 1.3–5.05  montage: PAYMENTS. OFFLINE. AI. LOAD. NAIROBI.
+  // 1.3–5.05  montage: ENGINEER. FOUNDER. TINKERER. CURIOUS. NAIROBI.
+  // Each word starts parked below its one-line mask by a CSS translate so nothing
+  // flashes before this runs. GSAP reads that as a pixel offset and adds it to
+  // yPercent, so words land off-centre and overlap. Zero y so only yPercent moves.
   q('[data-reel="word"]').forEach((word: Element, i: number) => {
     const at = 1.3 + i * WORD_STEP;
-    tl.fromTo(word, { yPercent: 110 }, { yPercent: 0, duration: WORD_IN }, at).to(
+    tl.fromTo(word, { y: 0, yPercent: 110 }, { y: 0, yPercent: 0, duration: WORD_IN }, at).to(
       word,
       { yPercent: -110, duration: WORD_OUT, ease: 'power3.in' },
       at + WORD_IN + WORD_HOLD,
