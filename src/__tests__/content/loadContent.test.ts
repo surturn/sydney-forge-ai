@@ -25,7 +25,8 @@ describe('loadContent', () => {
     expect(content.projects.filter((p) => p.tier === 'featured').map((p) => p.id)).toEqual([
       'assetflow', 'eventify', 'digital-twin', 'farmassist', 'forus',
     ])
-    expect(content.projects.filter((p) => p.tier === 'index')).toHaveLength(3)
+    expect(content.projects.filter((p) => p.tier === 'index')).toHaveLength(5)
+    expect(content.projects.filter((p) => p.status === 'Concept').map((p) => p.id)).toEqual(['halcyne', 'fenn-atelier'])
   })
 
   it('sorts projects by order', () => {
@@ -45,9 +46,9 @@ describe('loadContent', () => {
     expect(() => loadContent(dir)).toThrow(/eventify\.md[\s\S]*standfirst/)
   })
 
-  it('rejects a cover chip that names no project', () => {
-    edit('profile.json', (s) => s.replace('"eventify"', '"evntify"'))
-    expect(() => loadContent(dir)).toThrow(/profile\.json[\s\S]*evntify/)
+  it('rejects a project story with no problem', () => {
+    edit('projects/eventify.md', (s) => s.replace(/^ {2}problem:.*\r?\n/m, ''))
+    expect(() => loadContent(dir)).toThrow(/eventify\.md[\s\S]*story\.problem/)
   })
 
   it('rejects a solves proof that names no project', () => {

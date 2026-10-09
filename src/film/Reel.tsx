@@ -4,7 +4,8 @@ import { useFilmStore, type Mode, type ReelState } from './store';
 import { buildReel } from './reelTimeline';
 import { ReelControls } from '@/chrome/ReelControls';
 
-const WORDS = ['PAYMENTS.', 'OFFLINE.', 'AI.', 'LOAD.', 'NAIROBI.'];
+/** Who, before what: the person the cover then names. */
+const WORDS = ['ENGINEER.', 'FOUNDER.', 'TINKERER.', 'CURIOUS.', 'NAIROBI.'];
 
 /** The reel is the hook: it plays on every load in film mode, reloads included. */
 export function shouldPlayReel(mode: Mode): boolean {
@@ -110,10 +111,13 @@ export function Reel() {
           ))}
         </div>
         {WORDS.map((w) => (
-          <div key={w} className="absolute inset-0 flex items-center justify-center overflow-hidden">
-            <span data-reel="word" className="display block translate-y-[110%] text-[clamp(4rem,19vw,16rem)] text-paper">
-              {w}
-            </span>
+          <div key={w} className="absolute inset-0 flex items-center justify-center">
+            {/* The mask is one line tall, so a word is only visible while it passes through the centre. */}
+            <div data-reel="mask" className="overflow-hidden px-[0.05em] py-[0.04em]">
+              <span data-reel="word" className="display block translate-y-[110%] whitespace-nowrap text-[clamp(3rem,14vw,14rem)] leading-none text-paper">
+                {w}
+              </span>
+            </div>
           </div>
         ))}
         <svg data-reel="flowline" viewBox="0 0 400 60" className="absolute left-1/2 top-[70%] w-[70vw] -translate-x-1/2" fill="none">

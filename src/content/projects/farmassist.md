@@ -18,6 +18,11 @@ flow:
     - { from: App, to: Advisor, label: "Diagnosis + local weather" }
     - { from: Advisor, to: Farmer, label: "Treatment and timing", kind: recover }
 outcome: A model trained on real crop disease data, wrapped in advice a farmer can act on.
+story:
+  headline: "Photograph a leaf. Find out what's wrong."
+  intro: "A farmer with one photo, and no agronomist nearby."
+  problem: "When a crop gets sick, the person who could tell you what it is, and what to do about it, often isn't close by."
+  built: "An AI farming companion. A YOLOv8 model I trained on real crop disease data spots the problem, and local weather shapes the advice on what to do next. A WhatsApp channel is in progress."
 ---
 
 A monorepo with a feature-driven React frontend and a layered Express and Prisma backend, with Redis for caching and rate limiting.

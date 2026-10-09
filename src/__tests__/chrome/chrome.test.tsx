@@ -21,13 +21,13 @@ describe('ChapterBar', () => {
     render(<ChapterBar />)
     const nav = screen.getByRole('navigation', { name: 'Chapters' })
     const buttons = [...nav.querySelectorAll("button")].map((b) => b.getAttribute("aria-label"))
-    expect(buttons).toEqual(['Cover', 'Profile', 'Contact'])
-    expect(screen.getByRole('button', { name: 'Profile' })).toHaveAttribute('aria-current', 'step')
+    expect(buttons).toEqual(['Cover', 'About', 'Contact'])
+    expect(screen.getByRole('button', { name: 'About' })).toHaveAttribute('aria-current', 'step')
   })
 
-  it('offers Work with me and the mode toggle', () => {
+  it('offers the project CTA and the mode toggle', () => {
     render(<ChapterBar />)
-    expect(screen.getByRole('button', { name: /work with me/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /have a project\?/i })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /read as article/i })).toBeInTheDocument()
   })
 

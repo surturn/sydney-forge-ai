@@ -25,7 +25,7 @@ export const ProjectFrontSchema = z
   .object({
     id: z.string().regex(/^[a-z0-9-]+$/, 'id must be kebab-case'),
     name: z.string().min(1),
-    status: z.enum(['Live', 'Beta', 'In progress', 'Live (internal)']),
+    status: z.enum(['Live', 'Beta', 'In progress', 'Live (internal)', 'Concept']),
     tier: z.enum(['featured', 'index']),
     order: z.number().int(),
     repo: z.object({ url: z.string().url().nullable(), private: z.boolean() }),
@@ -36,6 +36,17 @@ export const ProjectFrontSchema = z
     figure: MediaSchema.optional(),
     flow: FlowSchema.optional(),
     outcome: z.string().max(200).optional(),
+    story: z
+      .object({
+        headline: z.string().min(1).max(80),
+        intro: z.string().min(1).max(220),
+        problem: z.string().min(1).max(240),
+        built: z.string().min(1).max(320),
+        /** Only what the project's own README or the owner actually says. */
+        learned: z.string().min(1).max(240).optional(),
+      })
+      .strict()
+      .optional(),
   })
   .strict()
   .superRefine((p, ctx) => {
@@ -97,23 +108,38 @@ export const ProfileSchema = z
     portrait: MediaSchema,
     cover: z.object({
       kicker: z.string(),
-      standfirst: z.string().max(140),
-      chips: z.array(z.string()).min(1).max(4),
+      headline: z.string().max(90),
+      standfirst: z.string().max(260),
+      caption: z.string().max(110),
     }),
-    who: z.object({ heading: z.string(), body: z.string(), invonics: z.string() }),
+    who: z.object({
+      heading: z.string(),
+      lead: z.string(),
+      intro: z.string(),
+      examples: z.array(z.string()).min(2).max(4),
+      close: z.string(),
+      building: z.object({ label: z.string(), note: z.string() }),
+    }),
     what: z.object({
       heading: z.string(),
-      body: z.string(),
+      body: z.array(z.string()).min(1).max(4),
       layers: z.array(z.object({ name: z.string(), items: z.array(z.string()).min(1) })).min(3).max(6),
     }),
+    context: z.object({ heading: z.string(), body: z.array(z.string()).min(1).max(5), coda: z.string(), aside: z.string() }),
     solves: z.object({
       heading: z.string(),
+      standfirst: z.string(),
       items: z
-        .array(z.object({ condition: z.string().max(90), proof: z.array(z.string()).min(1) }))
+        .array(z.object({ label: z.string().max(28), scenario: z.string().max(110), proof: z.array(z.string()).min(1) }))
         .min(3)
         .max(8),
     }),
-    for: z.object({ heading: z.string(), sectors: z.array(z.string()).min(3), tail: z.string() }),
+    figuring: z.object({ heading: z.string(), intro: z.string(), questions: z.array(z.string().max(110)).min(3).max(6) }),
+    for: z.object({
+      heading: z.string(),
+      people: z.array(z.object({ text: z.string(), quote: z.string().optional() })).min(3).max(6),
+      tail: z.string(),
+    }),
   })
   .strict();
 
@@ -134,6 +160,8 @@ export const LinkSchema = z.object({
 export const ContactSchema = z
   .object({
     heading: z.string(),
+    prompts: z.array(z.string()).min(1).max(4),
+    cta: z.string(),
     email: z.string().email(),
     cvPath: z.string().startsWith('/'),
     bookingUrl: z.string().url().nullable(),

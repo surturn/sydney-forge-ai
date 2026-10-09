@@ -11,7 +11,7 @@ const NUMERAL: Record<Chapter, string> = { cover: 'I', profile: 'II', work: 'III
 
 /**
  * Fixed top bar: chapters present in the film, the mode toggle, and the
- * Work-with-me CTA. Shots reserve top padding so it never covers focus.
+ * project CTA. Shots reserve top padding so it never covers focus.
  */
 export function ChapterBar() {
   const activeShot = useFilmStore((s) => s.activeShot);
@@ -51,7 +51,7 @@ export function ChapterBar() {
       <div className="flex items-center gap-2 py-2">
         <ModeToggle />
         <button type="button" className="btn-signal min-h-[44px] shrink-0 px-3 text-sm sm:px-5" onClick={() => seekToShot('back-cover')}>
-          Work with me
+          Have a project?
         </button>
       </div>
     </header>

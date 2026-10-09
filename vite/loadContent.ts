@@ -84,7 +84,6 @@ export function loadContent(dir: string): { content: Content; files: string[] } 
 
   const profilePath = join(dir, 'profile.json');
   const missing = [
-    ...profile.cover.chips.map((id) => ['cover.chips', id] as const),
     ...profile.solves.items.flatMap((it, i) => it.proof.map((id) => [`solves.items.${i}.proof`, id] as const)),
   ].filter(([, id]) => !ids.has(id));
   if (missing.length) {
