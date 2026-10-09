@@ -5,7 +5,6 @@ export type ModeReason = 'default' | 'toggle' | 'reduced-motion' | 'save-data';
 export type ReelState = 'pending' | 'playing' | 'paused' | 'done';
 
 export const MODE_KEY = 'film-mode';
-export const REEL_KEY = 'reel-seen';
 
 export function readStored(key: string, session = false): string | null {
   try {

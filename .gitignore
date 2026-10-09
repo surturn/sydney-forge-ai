@@ -25,3 +25,6 @@ dist-ssr
 
 # Superpowers brainstorming visual companion
 .superpowers/
+
+# graphify code graph (local)
+graphify-out/

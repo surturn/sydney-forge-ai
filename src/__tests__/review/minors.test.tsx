@@ -47,9 +47,8 @@ describe('Minor 3 — Skip keeps focus on the page', () => {
 })
 
 describe('Minor 4 — the reel is not built when it will not play', () => {
-  it('never mounts the overlay when the session flag is set', () => {
-    sessionStorage.setItem('reel-seen', '1')
-    useFilmStore.setState({ mode: 'film', reelState: 'pending' })
+  it('never mounts the overlay in article mode', () => {
+    useFilmStore.setState({ mode: 'article', reelState: 'pending' })
     const seen: boolean[] = []
     const origRender = Reel
     const Probe = () => {

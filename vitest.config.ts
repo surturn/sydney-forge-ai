@@ -17,7 +17,8 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./src/__tests__/setup.ts'],
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    exclude: ['node_modules', 'dist'],
+    // the audit test needs the network, run it with `npm run test:deps`
+    exclude: ['node_modules', 'dist', 'src/__tests__/security/dependencies.test.ts'],
     coverage: {
       reporter: ['text', 'json', 'html'],
     },
